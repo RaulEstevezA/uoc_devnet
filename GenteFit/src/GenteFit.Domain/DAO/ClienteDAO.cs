@@ -43,3 +43,5 @@ namespace GenteFit.Domain.DAO
         }
     }
 }
+
+// TODO Versión simple sin control de errores, implementar try-cach donde sea necesario.

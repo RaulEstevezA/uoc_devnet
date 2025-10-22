@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 namespace GenteFit.Domain.DAO
 {
+    public interface IDao { }  // Necesario para el FactoryDAO
+
     public interface IDao<T> where T : class
     {
         T? GetById(int id);

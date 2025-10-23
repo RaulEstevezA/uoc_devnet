@@ -7,5 +7,5 @@ public class Sala
     public int AforoMax { get; set; }
     public bool Disponible { get; set; } = true;
 
-    public ICollection<Actividad> Actividades { get; set; } = new List<Actividad>();
+    // public ICollection<Actividad> Actividades { get; set; } = new List<Actividad>(); No es necesario tenemos ReservaSala
 }

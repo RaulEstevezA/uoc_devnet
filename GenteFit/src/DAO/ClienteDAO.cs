@@ -1,6 +1,6 @@
-using GenteFit.Model.Entity;
+using GenteFit.src.model.entity;
 
-namespace GenteFit.DAO
+namespace GenteFit.src.DAO
 {
 
     // Importar los espacios de nombres necesarios
@@ -12,6 +12,9 @@ namespace GenteFit.DAO
 
     public class ClienteDAO : IDao<Cliente>
     {
+        public ClienteDAO() { }
+
+        
         private readonly GenteFitDbContext _db;
 
         public ClienteDAO(GenteFitDbContext db)
@@ -19,7 +22,6 @@ namespace GenteFit.DAO
             _db = db;
         }
 
-        public ClienteDAO() { }
 
         public Cliente? GetById(int id)
         {
@@ -48,6 +50,7 @@ namespace GenteFit.DAO
             _db.Clientes.Remove(entity);
             _db.SaveChanges();
         }
+        
     }
 }
 

@@ -1,6 +1,6 @@
-using GenteFit.Model.Entity;
+using GenteFit.src.model.entity;
 
-namespace GenteFit.DAO
+namespace GenteFit.src.DAO
 {
     public static class FactoryDAO
     {

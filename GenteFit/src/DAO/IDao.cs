@@ -1,4 +1,4 @@
-namespace GenteFit.DAO
+namespace GenteFit.src.DAO
 {
     public interface IDao { }  // Constructor necesario para el FactoryDAO
 

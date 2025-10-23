@@ -1,4 +1,4 @@
-namespace GenteFit.Model.Entity;
+namespace GenteFit.src.model.entity;
 
 public class Cliente
 {

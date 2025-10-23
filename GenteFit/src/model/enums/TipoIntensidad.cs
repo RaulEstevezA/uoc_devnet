@@ -1,4 +1,4 @@
-namespace GenteFit.Model.Enums
+namespace GenteFit.src.model.enums
 {
     public enum TipoIntensidad
     {

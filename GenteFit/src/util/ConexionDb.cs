@@ -21,6 +21,7 @@ namespace GenteFit.src.util
             {
                 if (_instance == null)
                     _instance = new ConexionDb();
+
                 return _instance;
             }
         }

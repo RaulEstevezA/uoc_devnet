@@ -14,7 +14,7 @@ public class SalaXml
             .Elements("Sala")
             .Select(x => new Sala
             {
-                Id = int.Parse(x.Element("Id")?.Value ?? "0"),
+                // No leer Id, es autoincremental
                 Nombre = x.Element("Nombre")?.Value ?? "",
                 AforoMax = int.Parse(x.Element("AforoMax")?.Value ?? "0"),
                 Disponible = bool.Parse(x.Element("Disponible")?.Value ?? "true")

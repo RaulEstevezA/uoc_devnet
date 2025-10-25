@@ -87,31 +87,37 @@ namespace GenteFit.src
                         break;
 
                     case "5":
-                        var salasDesdeXml = SalaXML.LeerSalasDesdeXml("xml_data/salas.xml");
-
-                        if (salasDesdeXml.Count == 0)
+                        try
                         {
-                            Console.WriteLine("No se encontraron salas en el archivo XML.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Salas leídas desde XML:");
-                            foreach (var sala in salasDesdeXml)
-                                Console.WriteLine(sala);
+                            var salasDesdeXml = SalaXML.LeerSalasDesdeXml("xml_data/salas.xml");
 
-                            Console.Write("\n¿Deseas importar estas salas a la base de datos? (s/n): ");
-                            var respuesta = Console.ReadLine();
-                            if (respuesta?.Trim().ToLower() == "s")
+                            if (salasDesdeXml.Count == 0)
                             {
-                                SalaXML.ImportarSalasDesdeXml("xml_data/salas.xml");
-                                Console.WriteLine("Salas importadas correctamente (se han ignorado las duplicadas).");
+                                Console.WriteLine("No se encontraron salas en el archivo XML.");
                             }
                             else
                             {
-                                Console.WriteLine("Operación cancelada.");
+                                Console.WriteLine("Salas leídas desde XML:");
+                                foreach (var sala in salasDesdeXml)
+                                    Console.WriteLine(sala);
+
+                                Console.Write("\n¿Deseas importar estas salas a la base de datos? (s/n): ");
+                                var respuesta = Console.ReadLine();
+                                if (respuesta?.Trim().ToLower() == "s")
+                                {
+                                    SalaXML.ImportarSalasDesdeXml("xml_data/salas.xml");
+                                    Console.WriteLine("Salas importadas correctamente (se han ignorado las duplicadas).");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Operación cancelada.");
+                                }
                             }
                         }
-
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error al acceder al archivo XML: {ex.Message}");
+                        }
                         break;
                     
                     case "6":

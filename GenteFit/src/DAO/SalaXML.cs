@@ -42,5 +42,21 @@ namespace GenteFit.src.DAO
             }
         }
 
+        // Importa las salas a un archivo XML
+        public static void GuardarSalasEnXml(List<Sala> salas, string rutaArchivo)
+        {
+            XElement root = new XElement("Salas",
+                salas.Select(s => new XElement("Sala",
+                    new XElement("Id", s.Id),
+                    new XElement("Nombre", s.Nombre),
+                    new XElement("AforoMax", s.AforoMax),
+                    new XElement("Disponible", s.Disponible)
+                ))
+            );
+
+            root.Save(rutaArchivo);
+            Console.WriteLine($"Se han guardado {salas.Count} salas en el archivo {rutaArchivo}");
+        }
+
     }
 }

@@ -20,7 +20,8 @@ namespace GenteFit.src
                 Console.WriteLine("3. Actualizar sala");
                 Console.WriteLine("4. Eliminar sala");
                 Console.WriteLine("5. Leer salas desde archivo XML");
-                Console.WriteLine("6. Probar conexión a la BBDD");
+                Console.WriteLine("6. Guardar salas en archivo XML");
+                Console.WriteLine("7. Probar conexión a la BBDD");
                 Console.WriteLine("0. Salir");
                 Console.Write("Selecciona una opción: ");
 
@@ -119,8 +120,23 @@ namespace GenteFit.src
                             Console.WriteLine($"Error al acceder al archivo XML: {ex.Message}");
                         }
                         break;
-                    
+
                     case "6":
+                        var salasActuales = GestionSala.ObtenerSalas().ToList();
+                        if (salasActuales.Count == 0)
+                        {
+                            Console.WriteLine("No hay salas para exportar.");
+                        }
+                        else
+                        {
+                            Directory.CreateDirectory("xml_data");
+                            SalaXML.GuardarSalasEnXml(salasActuales, "xml_data/salas_exportadas.xml");
+                            Console.WriteLine("Salas exportadas correctamente a xml_data/salas_exportadas.xml");
+                        }
+                        break;
+
+
+                    case "7":
                         Console.WriteLine("Probando conexión con la base de datos...");
                         TestConexion.ProbarConexion();
                         break;

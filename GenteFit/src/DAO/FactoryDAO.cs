@@ -4,18 +4,8 @@ namespace GenteFit.src.DAO
 {
     public static class FactoryDAO
     {
-        public static IDao<Cliente> GetDao(string daoType)
-        {
-            switch (daoType.Trim().ToUpperInvariant())
-            {
-                case "CLIENTEDB":
-                    return new ClienteDAO();
-                //case "MONITORDB":
-                //    return new MonitorDAO();
-                default:
-                    throw new ArgumentException($"Tipo de DAO desconocido: {daoType}");
-            }
-        }
+        public static IDao<Sala> GetSalaDAO() => new SalaDAO();
+        public static IDao<Cliente> GetClienteDAO() => new ClienteDAO();
     }
 }
 

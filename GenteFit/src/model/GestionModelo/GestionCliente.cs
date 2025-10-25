@@ -13,10 +13,10 @@ namespace GenteFit.src.model.GestionModelo
         // Implementación de la gestión de clientes
 
         // Ejemplo de método para agregar un cliente
-        public void AgregarCliente(Cliente cliente)
+        public static void AgregarCliente(Cliente cliente)
         {
             // Lógica para agregar un cliente
-            var clienteDao = FactoryDAO.GetDao("CLIENTEDB");
+            var clienteDao = FactoryDAO.GetClienteDAO();
             clienteDao.Save(cliente);
         }
 

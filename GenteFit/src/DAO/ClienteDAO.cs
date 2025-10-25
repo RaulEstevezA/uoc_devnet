@@ -1,56 +1,35 @@
 using GenteFit.src.model.entity;
+using GenteFit.src.util;
+using Microsoft.Data.SqlClient;
 
 namespace GenteFit.src.DAO
 {
-
-    // Importar los espacios de nombres necesarios
-    
-    // IMPORTANTE, ESTO ESTABA CREADO EN ANTERIOR PROYECTO, PENDIENTE ADAPTAR
-
-
-    // DAO para la entidad Cliente
-
     public class ClienteDAO : IDao<Cliente>
     {
-        public ClienteDAO() { }
-
-        
-        private readonly GenteFitDbContext _db;
-
-        public ClienteDAO(GenteFitDbContext db)
+        public void Delete(Cliente entity)
         {
-            _db = db;
-        }
-
-
-        public Cliente? GetById(int id)
-        {
-            return _db.Clientes.Find(id);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Cliente> GetAll()
         {
-            return _db.Clientes.AsNoTracking().ToList();
+            throw new NotImplementedException();
+        }
+
+        public Cliente? GetById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void Save(Cliente entity)
         {
-            _db.Clientes.Add(entity);
-            _db.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void Update(Cliente entity)
         {
-            _db.Clientes.Update(entity);
-            _db.SaveChanges();
+            throw new NotImplementedException();
         }
-
-        public void Delete(Cliente entity)
-        {
-            _db.Clientes.Remove(entity);
-            _db.SaveChanges();
-        }
-        
     }
 }
 

@@ -22,3 +22,8 @@ INSERT INTO Sala (Nombre, AforoMax, Disponible) VALUES
 -- Verificar los datos insertados
 
 SELECT * FROM Sala;
+
+
+-- Borrar la tabla Sala si es necesario
+
+DROP TABLE Sala;

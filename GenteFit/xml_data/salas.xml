@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Salas>
+	<Sala>
+		<Id>1</Id>
+		<Nombre>Sala Pruebas XML</Nombre>
+		<AforoMax>20</AforoMax>
+		<Disponible>true</Disponible>
+	</Sala>
+	<Sala>
+		<Id>2</Id>
+		<Nombre>Sala de XML</Nombre>
+		<AforoMax>16</AforoMax>
+		<Disponible>false</Disponible>
+	</Sala>
+</Salas>

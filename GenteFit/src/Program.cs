@@ -31,20 +31,33 @@ namespace GenteFit.src
             GestionSala.AgregarSala(nuevaSala);
 
 
-            // Recuperar la sala con Id 3 que el la última agrgregada a la BBDD
+            // Recuperar la sala con ultimo Id que el la última agrgregada a la BBDD
             var salaRecuperada = GestionSala.ObtenerSalaPorId(3);
             Console.WriteLine("\nSala recuperada por ID:");
             Console.WriteLine(salaRecuperada);
 
+            Console.WriteLine("\nPulsar para seguir con la siguiente prueba...");
+            Console.ReadKey();
 
 
-            Console.WriteLine("\nModificando AforoMax de la sala con Id 3 a 16.");
-
-            // Modificar campo AforoMax de la sala con Id 3
+            // Modificar campo AforoMax de la sala reada anteriormente
+            Console.WriteLine("\nModificando AforoMax de la ultima sala 16.");
+            
             salaRecuperada!.AforoMax = 16;
+            GestionSala.ActualizarSala(salaRecuperada);
+
+            Console.WriteLine("\nSala recuperada por ID:");
+            salaRecuperada = GestionSala.ObtenerSalaPorId(salaRecuperada.Id);
+            Console.WriteLine(salaRecuperada);
+
+            Console.WriteLine("\nPulsar para seguir con la siguiente prueba...");
+            Console.ReadKey();
+
+
+            // Eliminar la sala con Id 3
+            GestionSala.EliminarSala(salaRecuperada);            
+
 
         }
-
-
     }
 }

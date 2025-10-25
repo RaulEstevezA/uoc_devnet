@@ -13,11 +13,13 @@
 
 
 using GenteFit.Database;
+using GenteFit.src.util;
 
 namespace GenteFit.src
 {
     internal class Program
     {
+
         static async Task Main(string[] args)
         {
             Console.WriteLine("Prueba de conexión a SQL Server");

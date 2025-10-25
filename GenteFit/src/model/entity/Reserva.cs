@@ -1,3 +1,5 @@
+using GenteFit.src.model.enums;
+
 namespace GenteFit.src.model.entity;
 
 public class Reserva
@@ -10,7 +12,6 @@ public class Reserva
     public int ClienteId { get; set; }
     public Cliente Cliente { get; set; } = null!;
 
-    public string Estado { get; set; } = "CONFIRMADA"; // CONFIRMADA | CANCELADA | PROMOCIONADA
-    public string Origen { get; set; } = "CLIENTE";    // CLIENTE | RECEPCION | SISTEMA
-    public DateTime CreadaEn { get; set; } = DateTime.UtcNow;
+    public TipoEstado Estado { get; set; }
+    public DateTime CreadaEn { get; set; } = DateTime.UtcNow;  // TODO revisar si es correcto
 }

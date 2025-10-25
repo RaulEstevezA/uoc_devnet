@@ -2,40 +2,45 @@
 using System.Linq;
 using System.Xml.Linq;
 using GenteFit.src.model.entity;
-using GenteFit.src.model.dao;
+using GenteFit.src.DAO;
 
-public class SalaXml
+namespace GenteFit.src.DAO
 {
-    public static List<Sala> LeerSalasDesdeXml(string ruta)
+    public class SalaXML
     {
-        var doc = XDocument.Load(ruta);
-
-        return doc.Root?
-            .Elements("Sala")
-            .Select(x => new Sala
-            {
-                // No leer Id, es autoincremental
-                Nombre = x.Element("Nombre")?.Value ?? "",
-                AforoMax = int.Parse(x.Element("AforoMax")?.Value ?? "0"),
-                Disponible = bool.Parse(x.Element("Disponible")?.Value ?? "true")
-            })
-            .ToList() ?? new List<Sala>();
-    }
-
-    public static void ImportarSalasDesdeXml(string ruta, GenteFitDbContext context)
-    {
-        var salas = LeerSalasDesdeXml(ruta);
-
-        // Evitar duplicados si lo deseas (ejemplo por Nombre)
-        foreach (var sala in salas)
+        // Lee las salas desde un archivo XML y devuelve la lista
+        public static List<Sala> LeerSalasDesdeXml(string ruta)
         {
-            if (!context.Salas.Any(s => s.Id == sala.Id))
+            var doc = XDocument.Load(ruta);
+
+            return doc.Root?
+                .Elements("Sala")
+                .Select(x => new Sala
+                {
+                    Nombre = x.Element("Nombre")?.Value ?? "",
+                    AforoMax = int.Parse(x.Element("AforoMax")?.Value ?? "0"),
+                    Disponible = bool.Parse(x.Element("Disponible")?.Value ?? "true")
+                })
+                .ToList() ?? new List<Sala>();
+        }
+
+        // Importa las salas a la base de datos usando SalaDAO
+        public static void ImportarSalasDesdeXml(string ruta)
+        {
+            var salas = LeerSalasDesdeXml(ruta);
+            var dao = new SalaDAO();
+
+            foreach (var sala in salas)
             {
-                context.Salas.Add(sala);
+                // Comprobar si ya existe una sala con el mismo nombre (ignora mayúsculas/minúsculas)
+                bool existe = dao.GetAll().Any(s => s.Nombre.Equals(sala.Nombre, StringComparison.OrdinalIgnoreCase));
+
+                if (!existe)
+                {
+                    dao.Save(sala);
+                }
             }
         }
 
-        context.SaveChanges();
     }
 }
-

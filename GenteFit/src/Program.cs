@@ -1,63 +1,132 @@
 ﻿using GenteFit.src.model.GestionModelo;
-
+using GenteFit.src.model.entity;
+using GenteFit.src.DAO;
+using GenteFit.src.util;
 
 namespace GenteFit.src
 {
     class Program
     {
-
         static void Main()
         {
-            // Ejemplo de uso de GestionSala para obtener y mostrar todas las salas
-            // Este metodo será llamado por el controlador de la vista correspondiente
-            var salas = GestionSala.ObtenerSalas();
+            bool salir = false;
 
-            foreach (var sala in salas)
+            while (!salir)
             {
-                Console.WriteLine(sala);
+                Console.Clear();
+                Console.WriteLine("==== MENÚ PRINCIPAL ====");
+                Console.WriteLine("1. Ver todas las salas");
+                Console.WriteLine("2. Agregar nueva sala");
+                Console.WriteLine("3. Actualizar sala");
+                Console.WriteLine("4. Eliminar sala");
+                Console.WriteLine("5. Leer salas desde archivo XML");
+                Console.WriteLine("6. Probar conexión a la BBDD");
+                Console.WriteLine("0. Salir");
+                Console.Write("Selecciona una opción: ");
+
+                string? opcion = Console.ReadLine();
+                Console.Clear();
+
+                switch (opcion)
+                {
+                    case "0":
+                        salir = true;
+                        break;
+
+                    case "1":
+                        var salas = GestionSala.ObtenerSalas();
+                        Console.WriteLine("Salas en BBDD:");
+                        foreach (var sala in salas)
+                            Console.WriteLine(sala);
+                        break;
+
+                    case "2":
+                        var nuevaSala = new Sala
+                        {
+                            Nombre = "Sala de prueba",
+                            AforoMax = 15,
+                            Disponible = true
+                        };
+                        GestionSala.AgregarSala(nuevaSala);
+                        Console.WriteLine("Sala añadida correctamente.");
+                        break;
+
+                    case "3":
+                        Console.Write("Introduce ID de la sala a actualizar: ");
+                        if (int.TryParse(Console.ReadLine(), out int idActualizar))
+                        {
+                            var salaActualizar = GestionSala.ObtenerSalaPorId(idActualizar);
+                            if (salaActualizar != null)
+                            {
+                                salaActualizar.AforoMax += 5;  // Simple ejemplo
+                                GestionSala.ActualizarSala(salaActualizar);
+                                Console.WriteLine("Sala actualizada.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sala no encontrada.");
+                            }
+                        }
+                        break;
+
+                    case "4":
+                        Console.Write("Introduce ID de la sala a eliminar: ");
+                        if (int.TryParse(Console.ReadLine(), out int idEliminar))
+                        {
+                            var salaEliminar = GestionSala.ObtenerSalaPorId(idEliminar);
+                            if (salaEliminar != null)
+                            {
+                                GestionSala.EliminarSala(salaEliminar);
+                                Console.WriteLine("Sala eliminada.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Sala no encontrada.");
+                            }
+                        }
+                        break;
+
+                    case "5":
+                        var salasDesdeXml = SalaXML.LeerSalasDesdeXml("xml_data/salas.xml");
+
+                        if (salasDesdeXml.Count == 0)
+                        {
+                            Console.WriteLine("No se encontraron salas en el archivo XML.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Salas leídas desde XML:");
+                            foreach (var sala in salasDesdeXml)
+                                Console.WriteLine(sala);
+
+                            Console.Write("\n¿Deseas importar estas salas a la base de datos? (s/n): ");
+                            var respuesta = Console.ReadLine();
+                            if (respuesta?.Trim().ToLower() == "s")
+                            {
+                                SalaXML.ImportarSalasDesdeXml("xml_data/salas.xml");
+                                Console.WriteLine("Salas importadas correctamente (se han ignorado las duplicadas).");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Operación cancelada.");
+                            }
+                        }
+
+                        break;
+                    
+                    case "6":
+                        Console.WriteLine("Probando conexión con la base de datos...");
+                        TestConexion.ProbarConexion();
+                        break;
+
+                }
+
+                if (!salir)
+                {
+                    Console.WriteLine("\nPresiona cualquier tecla para continuar...");
+                    Console.ReadKey();
+                }
             }
-
-            //Ejemplo para agregar una nueva sala
-            var nuevaSala = new model.entity.Sala
-            {
-                Nombre = "Sala CrossFit",
-                AforoMax = 20,
-                Disponible = true
-            };
-
-            Console.WriteLine("\nAgregando nueva sala:");
-            Console.WriteLine(nuevaSala);   // El ID se asignará al guardar en la base de datos
-
-            GestionSala.AgregarSala(nuevaSala);
-
-
-            // Recuperar la sala con ultimo Id que el la última agrgregada a la BBDD
-            var salaRecuperada = GestionSala.ObtenerSalaPorId(3);
-            Console.WriteLine("\nSala recuperada por ID:");
-            Console.WriteLine(salaRecuperada);
-
-            Console.WriteLine("\nPulsar para seguir con la siguiente prueba...");
-            Console.ReadKey();
-
-
-            // Modificar campo AforoMax de la sala reada anteriormente
-            Console.WriteLine("\nModificando AforoMax de la ultima sala 16.");
-            
-            salaRecuperada!.AforoMax = 16;
-            GestionSala.ActualizarSala(salaRecuperada);
-
-            Console.WriteLine("\nSala recuperada por ID:");
-            salaRecuperada = GestionSala.ObtenerSalaPorId(salaRecuperada.Id);
-            Console.WriteLine(salaRecuperada);
-
-            Console.WriteLine("\nPulsar para seguir con la siguiente prueba...");
-            Console.ReadKey();
-
-
-            // Eliminar la sala con Id 3
-            GestionSala.EliminarSala(salaRecuperada);            
-
-
         }
     }
 }

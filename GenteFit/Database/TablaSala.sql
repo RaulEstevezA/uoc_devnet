@@ -17,3 +17,8 @@ CREATE TABLE Sala (
 INSERT INTO Sala (Nombre, AforoMax, Disponible) VALUES
 ('Sala Yoga', 16, 1),
 ('Sala Cardio', 16, 1);
+
+
+// Verificar los datos insertados
+
+SELECT * FROM Sala;

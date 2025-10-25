@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-
-namespace GenteFit.Domain.DAO
+namespace GenteFit.src.DAO
 {
-    public interface IDao { }  // Necesario para el FactoryDAO
+    public interface IDao { }  // Constructor necesario para el FactoryDAO
 
     public interface IDao<T> where T : class
     {

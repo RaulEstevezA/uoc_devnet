@@ -1,6 +1,6 @@
-namespace GenteFit.Domain;
+namespace GenteFit.src.model.entity;
 
-public class Reserva
+public class ListaEspera
 {
     public int Id { get; set; }
 
@@ -10,7 +10,6 @@ public class Reserva
     public int ClienteId { get; set; }
     public Cliente Cliente { get; set; } = null!;
 
-    public string Estado { get; set; } = "CONFIRMADA"; // CONFIRMADA | CANCELADA | PROMOCIONADA
-    public string Origen { get; set; } = "CLIENTE";    // CLIENTE | RECEPCION | SISTEMA
+    public int Posicion { get; set; }
     public DateTime CreadaEn { get; set; } = DateTime.UtcNow;
 }

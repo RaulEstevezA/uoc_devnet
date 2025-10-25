@@ -1,4 +1,4 @@
-namespace GenteFit.Domain;
+namespace GenteFit.src.model.entity;
 
 public class Sala
 {
@@ -8,4 +8,9 @@ public class Sala
     public bool Disponible { get; set; } = true;
 
     // public ICollection<Actividad> Actividades { get; set; } = new List<Actividad>(); No es necesario tenemos ReservaSala
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Nombre: {Nombre}, AforoMax: {AforoMax}, Disponible: {Disponible}";
+    }
 }

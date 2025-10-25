@@ -1,4 +1,6 @@
-namespace GenteFit.Domain;
+using GenteFit.src.model.enums;
+
+namespace GenteFit.src.model.entity;
 
 public class Sesion
 {
@@ -12,7 +14,7 @@ public class Sesion
 
     public DateTime Inicio { get; set; }
     public DateTime Fin { get; set; }
-    public string Estado { get; set; } = "PROGRAMADA";
+    public TipoEstado Estado { get; set; }
 
     public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
     public ICollection<ListaEspera> Espera { get; set; } = new List<ListaEspera>();

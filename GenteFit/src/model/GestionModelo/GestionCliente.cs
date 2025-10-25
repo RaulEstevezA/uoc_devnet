@@ -3,17 +3,20 @@
 // Hacen uso de factoryDAO y DAOs para interactuar con la base de datos.
 // Si es necesario harán uso de factory para acceder a XML u otros servicios.
 
-namespace GenteFit.Domain.GestionModelo
+using GenteFit.src.DAO;
+using GenteFit.src.model.entity;
+
+namespace GenteFit.src.model.GestionModelo
 {
     public class GestionCliente
     {
         // Implementación de la gestión de clientes
 
         // Ejemplo de método para agregar un cliente
-        public void AgregarCliente(Cliente cliente)
+        public static void AgregarCliente(Cliente cliente)
         {
             // Lógica para agregar un cliente
-            var clienteDao = DAO.FactoryDAO.GetDao("CLIENTEDB");
+            var clienteDao = FactoryDAO.GetClienteDAO();
             clienteDao.Save(cliente);
         }
 
@@ -22,4 +25,4 @@ namespace GenteFit.Domain.GestionModelo
 }
 
 
-// Esta clase será llamada desde el controlador de clientes en la capa de presentación.
+// Esta clase será llamada desde el controlador de cliente en la capa de presentación.

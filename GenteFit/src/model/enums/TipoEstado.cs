@@ -1,4 +1,4 @@
-namespace GenteFit.Domain
+namespace GenteFit.src.model.enums
 {
     public enum TipoEstado
     {

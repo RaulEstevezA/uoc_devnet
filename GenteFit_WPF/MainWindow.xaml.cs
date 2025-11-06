@@ -1,13 +1,5 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using GenteFit_WPF.Views;
 
 namespace GenteFit_WPF
 {
@@ -21,11 +13,11 @@ namespace GenteFit_WPF
             InitializeComponent();
         }
 
-        private void BtnVista1_Click(object sender, RoutedEventArgs e)
+        private void BtnSala_Click(object sender, RoutedEventArgs e)
         {
-            VistaPrincipal.Content = new Vista1(); // Vista1 es un UserControl
+            VistaPrincipal.Content = new SalaView(); // Vista1 es un UserControl
         }
-
+        /*
         private void BtnVista2_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new Vista2();
@@ -35,5 +27,6 @@ namespace GenteFit_WPF
         {
             VistaPrincipal.Content = new Vista3();
         }
+        */
     }
 }

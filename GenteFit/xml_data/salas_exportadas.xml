@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Salas>
+  <Sala>
+    <Id>1</Id>
+    <Nombre>Sala Yoga</Nombre>
+    <AforoMax>16</AforoMax>
+    <Disponible>true</Disponible>
+  </Sala>
+  <Sala>
+    <Id>2</Id>
+    <Nombre>Sala Cardio</Nombre>
+    <AforoMax>16</AforoMax>
+    <Disponible>true</Disponible>
+  </Sala>
+  <Sala>
+    <Id>10</Id>
+    <Nombre>Sala XML</Nombre>
+    <AforoMax>20</AforoMax>
+    <Disponible>true</Disponible>
+  </Sala>
+  <Sala>
+    <Id>11</Id>
+    <Nombre>Sala XML2</Nombre>
+    <AforoMax>16</AforoMax>
+    <Disponible>false</Disponible>
+  </Sala>
+</Salas>

@@ -1,15 +1,35 @@
-namespace GenteFit.src.model.entity;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Cliente
+namespace GenteFit.model.entity
 {
-    public int Id { get; set; }
-    public string Nombre { get; set; } = "";
-    public string Apellidos { get; set; } = "";
-    public string? Dni { get; set; }
-    public string? Email { get; set; } = null;
-    public int MaxReservas { get; set; } = 3;
-    public bool Activo { get; set; } = true;
+    public class Cliente
+    {
+        [Key, ForeignKey("Usuario")]   // El ID es también la FK a Usuario
+        public int Id { get; set; }
 
-    public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-    public ICollection<ListaEspera> Esperas { get; set; } = new List<ListaEspera>();
+        [Required]
+        [MaxLength(9)]
+        public string Dni { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Nombre { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Apellido1 { get; set; }
+
+        [MaxLength(50)]
+        public string? Apellido2 { get; set; }
+
+        [MaxLength(50)]
+        public string? Email { get; set; } // a la espera de decision conjunta
+
+        // 🔗 Relación 1–1 con Usuario
+        public Usuario Usuario { get; set; }
+
+        // 🔗 Relación 1–N con Reserva
+        public ICollection<Reserva>? Reservas { get; set; }
+    }
 }

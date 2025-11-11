@@ -1,18 +1,28 @@
-using GenteFit.src.model.enums;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GenteFit.src.model.entity;
-
-public class Actividad
+namespace GenteFit.model.entity
 {
-    public int Id { get; set; }
-    public string Nombre { get; set; } = "";
-    public string? Descripcion { get; set; }
-    public int Duracion { get; set; } = 45; // en minutos
-    public TipoIntensidad Intensidad { get; set; }
-    public int PlazasMax { get; set; } = 16;
+    public class Actividad
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-    public int SalaId { get; set; }
-    public Sala Sala { get; set; } = null!;
+        [Required]
+        [MaxLength(100)]
+        public string Nombre { get; set; }
 
-    public ICollection<Sesion> Sesiones { get; set; } = new List<Sesion>();
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "La duración debe ser mayor que 0")]
+        public int DuracionMin { get; set; }
+
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "El número de plazas debe ser mayor que 0")]
+        public int PlazasMax { get; set; } = 16; // valor por defecto en SQL
+
+        // 🔗 Relación 1–N con Sesion
+        public ICollection<Sesion>? Sesiones { get; set; }
+    }
 }

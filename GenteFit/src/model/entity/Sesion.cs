@@ -1,21 +1,40 @@
-using GenteFit.src.model.enums;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GenteFit.src.model.entity;
-
-public class Sesion
+namespace GenteFit.model.entity
 {
-    public int Id { get; set; }
+    public class Sesion
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-    public int ActividadId { get; set; }
-    public Actividad Actividad { get; set; } = null!;
+        // 🔗 Relación N–1 con Actividad
+        [Required]
+        public int ActividadId { get; set; }
+        public required Actividad Actividad { get; set; }
 
-    public int MonitorId { get; set; }
-    public Monitor Monitor { get; set; } = null!;
+        // 🔗 Relación N–1 con Monitor
+        [Required]
+        public int MonitorId { get; set; }
+        public required Monitor Monitor { get; set; }
 
-    public DateTime Inicio { get; set; }
-    public DateTime Fin { get; set; }
-    public TipoEstado Estado { get; set; }
+        [Required]
+        public DateTime FechaInicio { get; set; }
 
-    public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-    public ICollection<ListaEspera> Espera { get; set; } = new List<ListaEspera>();
+        [Required]
+        public DateTime FechaFin { get; set; }
+
+        // 🔗 Relación 1–N con Reserva
+        public ICollection<Reserva>? Reservas { get; set; }
+
+        // 🔗 Relación 1–1 o 1–N con ReservarSala
+        public ICollection<ReservarSala>? ReservasSala { get; set; }
+
+        // Validación simple para asegurar coherencia horaria
+        [NotMapped]
+        public bool RangoValido => FechaFin > FechaInicio;
+    }
 }

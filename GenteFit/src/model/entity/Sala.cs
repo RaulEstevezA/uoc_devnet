@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace GenteFit.src.model.entity;
 
 public class Sala
@@ -7,10 +8,11 @@ public class Sala
     public int AforoMax { get; set; }
     public bool Disponible { get; set; } = true;
 
-    // public ICollection<Actividad> Actividades { get; set; } = new List<Actividad>(); No es necesario tenemos ReservaSala
+    // relaciones
+    public List<ReservarSala>? ReservasSala { get; set; }
 
-    public override string ToString()
+public override string ToString()
     {
-        return $"Id: {Id}, Nombre: {Nombre}, AforoMax: {AforoMax}, Disponible: {Disponible}";
+        return $"{Id}: {Nombre}, aforo {AforoMax}, disponible {Disponible}";
     }
 }

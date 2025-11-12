@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 namespace GenteFit.src.model.entity;
 
 public class Sesion

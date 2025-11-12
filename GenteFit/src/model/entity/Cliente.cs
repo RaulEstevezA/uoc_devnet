@@ -1,4 +1,5 @@
 namespace GenteFit.src.model.entity;
+
 public class Cliente
 {
     public int Id { get; set; }

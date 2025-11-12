@@ -1,6 +1,5 @@
 using System;
 using GenteFit.src.model.enums;
-
 namespace GenteFit.src.model.entity;
 
 public class Usuario

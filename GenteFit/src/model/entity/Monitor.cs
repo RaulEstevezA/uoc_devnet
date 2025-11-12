@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 namespace GenteFit.src.model.entity;
 
-
 public class Monitor
 {
     public int Id { get; set; }

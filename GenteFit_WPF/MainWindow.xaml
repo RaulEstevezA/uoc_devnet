@@ -14,9 +14,9 @@
 
         <!-- Columna fija de navegación -->
         <StackPanel Grid.Column="0" Background="LightGray">
+            <Button Content="Reservar Actividades" Margin="10" Click="BtnSala_Click"/>            
             <Button Content="Mostrar Salas" Margin="10" Click="BtnSala_Click"/>
             <!--
-            <Button Content="Vista 2" Margin="10" Click="BtnVista2_Click"/>
             <Button Content="Vista 3" Margin="10" Click="BtnVista3_Click"/>
             -->
         </StackPanel>

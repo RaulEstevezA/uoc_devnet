@@ -17,12 +17,12 @@ namespace GenteFit_WPF
         {
             VistaPrincipal.Content = new SalaView(); // Vista1 es un UserControl
         }
-        /*
-        private void BtnVista2_Click(object sender, RoutedEventArgs e)
+        
+        private void BtnSala_Click(object sender, RoutedEventArgs e)
         {
-            VistaPrincipal.Content = new Vista2();
+            VistaPrincipal.Content = new SalaView();
         }
-
+        /*
         private void BtnVista3_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new Vista3();

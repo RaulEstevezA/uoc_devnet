@@ -16,29 +16,15 @@ INSERT INTO TipoRol (nombre) VALUES
 ('MONITOR');
 
 
--- Estados de reserva (RESERVADA, EN_ESPERA, CANCELADA, FINALIZADA)
-CREATE TABLE EstadoReserva (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    nombre NVARCHAR(50) NOT NULL UNIQUE
-);
-
-INSERT INTO EstadoReserva (nombre) VALUES
-('RESERVADA'),
-('EN_ESPERA'),
-('CANCELADA'),
-('FINALIZADA');
-
 
 CREATE TABLE Usuario (
     id INT IDENTITY(1,1) PRIMARY KEY,
     username NVARCHAR(50) NOT NULL UNIQUE,
     email NVARCHAR(100) NOT NULL UNIQUE,
     passwordHash NVARCHAR(255) NOT NULL,
-    tipoRol NVARCHAR(20) NOT NULL 
-        CONSTRAINT CK_Usuario_TipoRol CHECK (
-            tipoRol IN ('ADMINISTRADOR', 'ENCARGADO', 'RECEPCIONISTA', 'CLIENTE', 'MONITOR')
-        )
-        CONSTRAINT DF_Usuario_TipoRol DEFAULT 'CLIENTE',   -- valor por defecto
+    TipoRolId INT NOT NULL,
+    CONSTRAINT FK_Usuario_TipoRol FOREIGN KEY (TipoRolId)
+        REFERENCES TipoRol(Id),
     activo BIT NOT NULL DEFAULT 1,
     creadoEn DATETIME2 NOT NULL DEFAULT SYSDATETIME()
 );
@@ -47,7 +33,7 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Cliente (
     id INT PRIMARY KEY,                -- mismo id que Usuario
-    dni NVARCHAR(9) NOT NULL UNIQUE,   -- 9 caracteres alfanuméricos
+    dni NVARCHAR(9) NOT NULL UNIQUE,   -- 9 caracteres alfanumï¿½ricos
     nombre NVARCHAR(50) NOT NULL,
     apellido1 NVARCHAR(50) NOT NULL,
     apellido2 NVARCHAR(50) NULL,
@@ -77,13 +63,14 @@ CREATE TABLE Sala (
 
 CREATE TABLE ReservarSala (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    SalaId INT NOT NULL,              -- sala reservada
-    SesionId INT NOT NULL,            -- sesión que la ocupa
-    Estado NVARCHAR(20) NOT NULL,     -- por ejemplo: 'RESERVADA', 'CANCELADA', etc.
+    SalaId INT NOT NULL,
+    SesionId INT NOT NULL,
+    Estado NVARCHAR(20) NOT NULL,
     CONSTRAINT FK_ReservarSala_Sala FOREIGN KEY (SalaId)
         REFERENCES Sala(Id),
     CONSTRAINT FK_ReservarSala_Sesion FOREIGN KEY (SesionId)
-        REFERENCES Sesion(Id)
+        REFERENCES Sesion(Id),
+    CONSTRAINT UQ_ReservarSala_Sala_Sesion UNIQUE (SalaId, SesionId)
 );
 
 
@@ -97,8 +84,8 @@ CREATE TABLE Actividad (
 
 CREATE TABLE Sesion (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    ActividadId INT NOT NULL,            -- tipo de actividad
-    MonitorId INT NOT NULL,              -- monitor asignado
+    ActividadId INT NOT NULL,
+    MonitorId INT NOT NULL,
     FechaInicio DATETIME2 NOT NULL,
     FechaFin DATETIME2 NOT NULL,
     CONSTRAINT FK_Sesion_Actividad FOREIGN KEY (ActividadId)
@@ -113,19 +100,16 @@ CREATE TABLE Reserva (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     ClienteId INT NOT NULL,
     SesionId INT NOT NULL,
-    EstadoReservaId INT NOT NULL,        -- FK a EstadoReserva ('RESERVADA', 'EN_ESPERA', etc.)
+    EstadoReserva NVARCHAR(20) NOT NULL,  -- ahora se guarda el nombre del estado directamente
     FechaReserva DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
-    PosicionEspera INT NULL,             -- posición en la lista de espera (solo si está en espera)
+    PosicionEspera INT NULL,
     CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteId)
         REFERENCES Cliente(Id),
     CONSTRAINT FK_Reserva_Sesion FOREIGN KEY (SesionId)
         REFERENCES Sesion(Id),
-    CONSTRAINT FK_Reserva_Estado FOREIGN KEY (EstadoReservaId)
-        REFERENCES EstadoReserva(Id),
     CONSTRAINT UQ_Reserva_Cliente_Sesion UNIQUE (ClienteId, SesionId),
     CONSTRAINT CK_Reserva_Posicion CHECK (PosicionEspera IS NULL OR PosicionEspera > 0)
 );
-
 
 
 -- =============================================

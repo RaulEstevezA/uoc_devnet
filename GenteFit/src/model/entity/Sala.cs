@@ -1,26 +1,18 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace GenteFit.src.model.entity;
 
-namespace GenteFit.model.entity
+public class Sala
 {
-    public class Sala
+    public int Id { get; set; }
+    public string Nombre { get; set; } = "";
+    public int AforoMax { get; set; }
+    public bool Disponible { get; set; } = true;
+
+    // relacion logica con reservas de sala
+    public List<ReservarSala>? ReservasSala { get; set; }
+
+public override string ToString()
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Nombre { get; set; }
-
-        [Required]
-        public int AforoMax { get; set; }
-
-        [Required]
-        public bool Disponible { get; set; }
-
-        // Relación 1–N con ReservarSala
-        public ICollection<ReservarSala>? ReservasSala { get; set; }
+        return $"{Id}: {Nombre}, aforo {AforoMax}, disponible {Disponible}";
     }
 }

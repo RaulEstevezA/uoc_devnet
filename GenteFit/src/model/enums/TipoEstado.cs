@@ -1,10 +1,9 @@
-namespace GenteFit.model.enums
+using GenteFit.src.model.enums;
+
+public enum TipoEstado
 {
-    public enum TipoEstado
-    {
-        Reservada,
-        EnEspera,
-        Cancelada,
-        Finalizada
-    }
+    Reservada,
+    EnEspera,
+    Cancelada,
+    Finalizada
 }

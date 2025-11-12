@@ -1,41 +1,24 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using GenteFit.model.enums;
+using GenteFit.src.model.enums;
 
-namespace GenteFit.model.entity
+namespace GenteFit.src.model.entity;
+
+public class Usuario
 {
-    public class Usuario
+    public int Id { get; set; }
+    public string Username { get; set; } = "";
+    public string Email { get; set; } = "";
+    public string PasswordHash { get; set; } = "";
+    public string TipoRol { get; set; } = "CLIENTE";
+    public bool Activo { get; set; } = true;
+    public DateTime CreadoEn { get; set; } = DateTime.Now;
+
+    // relacion logica con cliente o monitor
+    public Cliente? Cliente { get; set; }
+    public Monitor? Monitor { get; set; }
+
+    public override string ToString()
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string Username { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Email { get; set; }
-
-        [Required]
-        [MaxLength(255)]
-        public string PasswordHash { get; set; }
-
-        [Required]
-        public TipoRol TipoRol { get; set; } = TipoRol.Cliente;  // Valor por defecto
-
-        [Required]
-        public bool Activo { get; set; } = true;
-
-        [Required]
-        public DateTime CreadoEn { get; set; } = DateTime.Now;
-
-        // Relación 1–1 opcional con Cliente
-        public Cliente? Cliente { get; set; }
-
-        // Relación 1–1 opcional con Monitor
-        public Monitor? Monitor { get; set; }
+        return $"{Id}: {Username}, rol {TipoRol}, activo {Activo}";
     }
 }

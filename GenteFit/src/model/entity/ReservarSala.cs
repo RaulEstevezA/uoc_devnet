@@ -1,27 +1,20 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using GenteFit.model.enums;
+using GenteFit.src.model.enums;
 
-namespace GenteFit.model.entity
+namespace GenteFit.src.model.entity;
+
+public class ReservarSala
 {
-    public class ReservarSala
+    public int Id { get; set; }
+    public int SalaId { get; set; }
+    public int SesionId { get; set; }
+    public TipoEstado Estado { get; set; }
+
+    // relaciones logicas
+    public Sala? Sala { get; set; }
+    public Sesion? Sesion { get; set; }
+
+    public override string ToString()
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        // 🔗 Relación N–1 con Sala
-        [Required]
-        public int SalaId { get; set; }
-        public Sala Sala { get; set; }
-
-        // 🔗 Relación N–1 con Sesion
-        [Required]
-        public int SesionId { get; set; }
-        public Sesion Sesion { get; set; }
-
-        // Estado de la reserva de sala (puede compartir el enum de Reserva)
-        [Required]
-        public TipoEstado Estado { get; set; } = TipoEstado.Reservada;
+        return $"{Id}: sala {SalaId}, sesion {SesionId}, estado {Estado}";
     }
 }

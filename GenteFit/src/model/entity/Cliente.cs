@@ -1,35 +1,20 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GenteFit.model.entity
+namespace GenteFit.src.model.entity;
+public class Cliente
 {
-    public class Cliente
+    public int Id { get; set; }
+    public string Dni { get; set; }
+    public string Nombre { get; set; }
+    public string Apellido1 { get; set; }
+    public string? Apellido2 { get; set; }
+    public string? Email { get; set; }
+
+    // relaciones opcionales
+    public Usuario? Usuario { get; set; }
+    public List<Reserva>? Reservas { get; set; }
+
+
+    public override string ToString()
     {
-        [Key, ForeignKey("Usuario")]   // El ID es también la FK a Usuario
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(9)]
-        public string Dni { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string Nombre { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string Apellido1 { get; set; }
-
-        [MaxLength(50)]
-        public string? Apellido2 { get; set; }
-
-        [MaxLength(50)]
-        public string? Email { get; set; } // a la espera de decision conjunta
-
-        // 🔗 Relación 1–1 con Usuario
-        public Usuario Usuario { get; set; }
-
-        // 🔗 Relación 1–N con Reserva
-        public ICollection<Reserva>? Reservas { get; set; }
+        return $"{Id}: {Nombre} {Apellido1} {(string.IsNullOrWhiteSpace(Apellido2) ? "" : Apellido2)} - DNI: {Dni}";
     }
 }

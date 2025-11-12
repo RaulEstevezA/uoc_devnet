@@ -1,9 +1,8 @@
-namespace GenteFit.src.model.enums
+namespace GenteFit.src.model.enums;
+
+public enum TipoIntensidad
 {
-    public enum TipoIntensidad
-    {
-        BAJA,
-        MEDIA,
-        ALTA 
-    }
+    BAJA,
+    MEDIA,
+    ALTA 
 }

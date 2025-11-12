@@ -1,35 +1,20 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using GenteFit.model.enums;
+using GenteFit.src.model.enums;
+namespace GenteFit.src.model.entity;
 
-namespace GenteFit.model.entity
-{
-    public class Reserva
+public class Reserva {
+    public int Id { get; set; }
+    public int ClienteId { get; set; }
+    public Cliente? Cliente { get; set; }
+    public int SesionId { get; set; }
+    public Sesion? Sesion { get; set; }
+    public TipoEstado EstadoReserva { get; set; }
+    public DateTime FechaReserva { get; set; }
+    public int? PosicionEspera { get; set; }
+
+
+    public override string ToString()
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        // 🔗 Relación N–1 con Cliente
-        [Required]
-        public int ClienteId { get; set; }
-        public Cliente Cliente { get; set; }
-
-        // 🔗 Relación N–1 con Sesion
-        [Required]
-        public int SesionId { get; set; }
-        public Sesion Sesion { get; set; }
-
-        // Estado de la reserva (enum equivalente a tabla EstadoReserva)
-        [Required]
-        public TipoEstado EstadoReserva { get; set; } = TipoEstado.Reservada;
-
-        // Fecha en la que se realiza la reserva
-        [Required]
-        public DateTime FechaReserva { get; set; } = DateTime.Now;
-
-        // Posición en lista de espera (solo si EstadoReserva == EnEspera)
-        public int? PosicionEspera { get; set; }
+        return $"{Id}: cliente {ClienteId}, sesion {SesionId}, estado {EstadoReserva}, fecha {FechaReserva}, espera {PosicionEspera}";
     }
 }

@@ -1,11 +1,10 @@
-namespace GenteFit.model.enums
+using GenteFit.src.model.enums;
+
+public enum TipoRol
 {
-    public enum TipoRol
-    {
-        Administrador,
-        Encargado,
-        Recepcionista,
-        Cliente,
-        Monitor
-    }
+    Administrador,
+    Encargado,
+    Recepcionista,
+    Cliente,
+    Monitor
 }

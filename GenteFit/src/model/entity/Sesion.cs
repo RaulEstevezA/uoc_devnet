@@ -1,21 +1,23 @@
-using GenteFit.src.model.enums;
-
+using System;
+using System.Collections.Generic;
 namespace GenteFit.src.model.entity;
 
 public class Sesion
 {
     public int Id { get; set; }
-
     public int ActividadId { get; set; }
-    public Actividad Actividad { get; set; } = null!;
-
     public int MonitorId { get; set; }
-    public Monitor Monitor { get; set; } = null!;
+    public DateTime FechaInicio { get; set; }
+    public DateTime FechaFin { get; set; }
 
-    public DateTime Inicio { get; set; }
-    public DateTime Fin { get; set; }
-    public TipoEstado Estado { get; set; }
+    // relaciones
+    public Actividad? Actividad { get; set; }
+    public Monitor? Monitor { get; set; }
+    public List<Reserva>? Reservas { get; set; }
+    public List<ReservarSala>? ReservasSala { get; set; }
 
-    public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
-    public ICollection<ListaEspera> Espera { get; set; } = new List<ListaEspera>();
+    public override string ToString()
+    {
+        return $"{Id}: actividad {ActividadId}, monitor {MonitorId}, inicio {FechaInicio}, fin {FechaFin}";
+    }
 }

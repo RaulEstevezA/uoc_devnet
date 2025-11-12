@@ -10,7 +10,7 @@ public class ReservarSala
 
     // relaciones
     public Sala? Sala { get; set; }
-    public Sesion? Sesion { get; set; }
+    public Sesion? Sesion { get; set; }   
 
     public override string ToString()
     {

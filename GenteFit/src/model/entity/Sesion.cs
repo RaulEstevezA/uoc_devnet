@@ -14,7 +14,7 @@ public class Sesion
     public Actividad? Actividad { get; set; }
     public Monitor? Monitor { get; set; }
     public List<Reserva>? Reservas { get; set; }
-    public List<ReservarSala>? ReservasSala { get; set; }
+    public List<ReservarSala>? ReservasSala { get; set; } // No es necesario tener la relacion inversa
 
     public override string ToString()
     {

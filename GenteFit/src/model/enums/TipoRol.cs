@@ -1,4 +1,4 @@
-using GenteFit.src.model.enums;
+namespace GenteFit.src.model.enums;
 
 public enum TipoRol
 {

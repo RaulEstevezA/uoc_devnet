@@ -8,7 +8,7 @@ public class Cliente
     public string? Apellido2 { get; set; }
     public string? Email { get; set; }
 
-    // relaciones opcionales
+    // relaciones 
     public Usuario? Usuario { get; set; }
     public List<Reserva>? Reservas { get; set; }
 

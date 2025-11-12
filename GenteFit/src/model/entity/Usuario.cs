@@ -13,7 +13,7 @@ public class Usuario
     public bool Activo { get; set; } = true;
     public DateTime CreadoEn { get; set; } = DateTime.Now;
 
-    // relacion logica con cliente o monitor
+    // relaciones
     public Cliente? Cliente { get; set; }
     public Monitor? Monitor { get; set; }
 

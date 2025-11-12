@@ -11,7 +11,7 @@ public class Sesion
     public DateTime FechaInicio { get; set; }
     public DateTime FechaFin { get; set; }
 
-    // relaciones logicas
+    // relaciones
     public Actividad? Actividad { get; set; }
     public Monitor? Monitor { get; set; }
     public List<Reserva>? Reservas { get; set; }

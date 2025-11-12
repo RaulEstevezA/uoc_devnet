@@ -10,7 +10,7 @@ public class Monitor
     public string? Apellido2 { get; set; }
     public string? Email { get; set; }
 
-    // relaciones logicas 
+    // relaciones
     public Usuario? Usuario { get; set; }
 
 

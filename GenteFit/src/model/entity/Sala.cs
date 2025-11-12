@@ -8,7 +8,7 @@ public class Sala
     public int AforoMax { get; set; }
     public bool Disponible { get; set; } = true;
 
-    // relacion logica con reservas de sala
+    // relaciones
     public List<ReservarSala>? ReservasSala { get; set; }
 
 public override string ToString()

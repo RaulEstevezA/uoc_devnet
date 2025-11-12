@@ -9,7 +9,7 @@ public class ReservarSala
     public int SesionId { get; set; }
     public TipoEstado Estado { get; set; }
 
-    // relaciones logicas
+    // relaciones
     public Sala? Sala { get; set; }
     public Sesion? Sesion { get; set; }
 

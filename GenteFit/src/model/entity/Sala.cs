@@ -8,8 +8,6 @@ public class Sala
     public int AforoMax { get; set; }
     public bool Disponible { get; set; } = true;
 
-    // relaciones
-    public List<ReservarSala>? ReservasSala { get; set; }
 
 public override string ToString()
     {

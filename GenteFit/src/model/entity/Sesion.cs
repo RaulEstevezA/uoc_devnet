@@ -7,6 +7,7 @@ public class Sesion
     public int Id { get; set; }
     public int ActividadId { get; set; }
     public int MonitorId { get; set; }
+    public int SalaId { get; set; }
     public DateTime FechaInicio { get; set; }
     public DateTime FechaFin { get; set; }
 
@@ -14,7 +15,7 @@ public class Sesion
     public Actividad? Actividad { get; set; }
     public Monitor? Monitor { get; set; }
     public List<Reserva>? Reservas { get; set; }
-    public List<ReservarSala>? ReservasSala { get; set; } // No es necesario tener la relacion inversa
+    public Sala? Sala { get; set; }
 
     public override string ToString()
     {

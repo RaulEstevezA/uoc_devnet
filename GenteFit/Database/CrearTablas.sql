@@ -61,19 +61,6 @@ CREATE TABLE Sala (
 );
 
 
-CREATE TABLE ReservarSala (
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    SalaId INT NOT NULL,
-    SesionId INT NOT NULL,
-    Estado NVARCHAR(20) NOT NULL,
-    CONSTRAINT FK_ReservarSala_Sala FOREIGN KEY (SalaId)
-        REFERENCES Sala(Id),
-    CONSTRAINT FK_ReservarSala_Sesion FOREIGN KEY (SesionId)
-        REFERENCES Sesion(Id),
-    CONSTRAINT UQ_ReservarSala_Sala_Sesion UNIQUE (SalaId, SesionId)
-);
-
-
 CREATE TABLE Actividad (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Nombre NVARCHAR(100) NOT NULL UNIQUE,

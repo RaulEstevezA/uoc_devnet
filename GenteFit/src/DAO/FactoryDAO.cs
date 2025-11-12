@@ -6,6 +6,10 @@ namespace GenteFit.src.DAO
     {
         public static IDao<Sala> GetSalaDAO() => new SalaDAO();
         public static IDao<Cliente> GetClienteDAO() => new ClienteDAO();
+
+        public static IDao<Actividad> GetActividadDAO() => new ActividadDAO();
+
+        public static IDao<Instructor> GetInstructorDAO() => new InstructorDAO();
     }
 }
 
@@ -14,7 +18,7 @@ namespace GenteFit.src.DAO
 
 // Como usar el factory:
 
-// Creación de instancias:
+// Creaciï¿½n de instancias:
 // var clienteDao = FactoryDAO.GetDao("CLIENTEDB");
 // var monitorDao = FactoryDAO.GetDao("MONITORDB");
 
@@ -22,8 +26,8 @@ namespace GenteFit.src.DAO
 // var clienteDao = FactoryDAO.GetDao("CLIENTEDB");
 // var cliente = clienteDao.GetById(1);
 
-// Como resultado, se obtiene una instancia del DAO y en este caso se llama al método GetById
+// Como resultado, se obtiene una instancia del DAO y en este caso se llama al mï¿½todo GetById
 // para obtener un cliente con el  ID 1.
 
 
-// Nota: Los DAOs deben tener un constructor sin parámetros.
+// Nota: Los DAOs deben tener un constructor sin parï¿½metros.

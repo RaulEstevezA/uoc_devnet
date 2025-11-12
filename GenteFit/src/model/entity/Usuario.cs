@@ -14,7 +14,7 @@ public class Usuario
 
     // relaciones
     public Cliente? Cliente { get; set; }
-    public Monitor? Monitor { get; set; }
+    public Instructor? Instructor { get; set; }
 
     public override string ToString()
     {

@@ -43,7 +43,7 @@ CREATE TABLE Cliente (
 );
 
 
-CREATE TABLE Monitor (
+CREATE TABLE Instructor (
     id INT PRIMARY KEY,                      -- mismo id que Usuario
     nombre NVARCHAR(50) NOT NULL,
     apellido1 NVARCHAR(50) NOT NULL,
@@ -72,13 +72,13 @@ CREATE TABLE Actividad (
 CREATE TABLE Sesion (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     ActividadId INT NOT NULL,
-    MonitorId INT NOT NULL,
+    InstructorId INT NOT NULL,
     FechaInicio DATETIME2 NOT NULL,
     FechaFin DATETIME2 NOT NULL,
     CONSTRAINT FK_Sesion_Actividad FOREIGN KEY (ActividadId)
         REFERENCES Actividad(Id),
-    CONSTRAINT FK_Sesion_Monitor FOREIGN KEY (MonitorId)
-        REFERENCES Monitor(Id),
+    CONSTRAINT FK_Sesion_Instructor FOREIGN KEY (InstructorId)
+        REFERENCES Instructor(id),
     CONSTRAINT CK_Sesion_RangoHoras CHECK (FechaFin > FechaInicio)
 );
 

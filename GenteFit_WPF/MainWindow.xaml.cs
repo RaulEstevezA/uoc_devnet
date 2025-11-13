@@ -13,16 +13,16 @@ namespace GenteFit_WPF
             InitializeComponent();
         }
 
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        {
+            VistaPrincipal.Content = new ReservaActView(); // Vista1 es un UserControl
+        }
+        
         private void BtnSala_Click(object sender, RoutedEventArgs e)
         {
-            VistaPrincipal.Content = new SalaView(); // Vista1 es un UserControl
+            VistaPrincipal.Content = new SalaView();
         }
         /*
-        private void BtnVista2_Click(object sender, RoutedEventArgs e)
-        {
-            VistaPrincipal.Content = new Vista2();
-        }
-
         private void BtnVista3_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new Vista3();

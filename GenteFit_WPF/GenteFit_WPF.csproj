@@ -9,7 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\LogoGenteFit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GenteFit\GenteFit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\LogoGenteFit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

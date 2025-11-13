@@ -8,5 +8,8 @@ namespace GenteFit_WPF.ViewModel
 {
     internal class ReservaActViewModel
     {
+
+        // Obtencion de datos y logica de negocio para la vista ReservaActView.xaml
+        public ReservaActViewModel() { } // Constructor default
     }
 }

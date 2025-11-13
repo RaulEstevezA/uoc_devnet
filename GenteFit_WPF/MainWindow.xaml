@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenteFit_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GenteFit" Height="550" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -14,8 +14,8 @@
 
         <!-- Columna fija de navegación -->
         <StackPanel Grid.Column="0" Background="LightGray">
-            <Button Content="Reservar Actividades" Margin="10" Click="BtnSala_Click"/>            
-            <Button Content="Mostrar Salas" Margin="10" Click="BtnSala_Click"/>
+            <Button Content="Reservar Actividades" Margin="10,10,10,0" Click="BtnReservas_Click"/>            
+            <Button Content="Mostrar Salas" Margin="10,5,10,10" Click="BtnSala_Click" RenderTransformOrigin="0.501,-0.36"/>
             <!--
             <Button Content="Vista 3" Margin="10" Click="BtnVista3_Click"/>
             -->

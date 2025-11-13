@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 namespace GenteFit.src.model.entity;
 
-public class Monitor
+public class Instructor
 {
     public int Id { get; set; }
     public string? Nombre { get; set; }
@@ -9,9 +8,8 @@ public class Monitor
     public string? Apellido2 { get; set; }
     public string? Email { get; set; }
 
-    // relaciones
+    // relacion con usuario
     public Usuario? Usuario { get; set; }
-
 
     public override string ToString()
     {

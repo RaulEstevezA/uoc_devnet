@@ -16,7 +16,12 @@
         <StackPanel Grid.Column="0" Background="LightGray">
             <Button Content="Reservar Actividades" Margin="10,10,10,0" Click="BtnReservas_Click"/>            
             <Button Content="Mostrar Salas" Margin="10,5,10,10" Click="BtnSala_Click" RenderTransformOrigin="0.501,-0.36"/>
-            <!--
+			<Button Content="Alta Cliente" Margin="10,5,10,10" Click="BtnAltaCliente_Click"/>
+			<Button Content="Alta Instructor" Margin="10,5,10,10" Click="BtnAltaInstructor_Click"/>
+			<Button Content="Alta Usuario" Margin="10 5 10 0" Click="BtnAltaUsuario_Click"/>
+
+
+			<!--
             <Button Content="Vista 3" Margin="10" Click="BtnVista3_Click"/>
             -->
         </StackPanel>

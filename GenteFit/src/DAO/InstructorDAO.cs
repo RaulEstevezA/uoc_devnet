@@ -2,10 +2,6 @@ using GenteFit.src.model.entity;
 using GenteFit.src.util;
 using Microsoft.Data.SqlClient;
 
-using GenteFit.src.model.entity;
-using GenteFit.src.util;
-using Microsoft.Data.SqlClient;
-
 namespace GenteFit.src.DAO
 {
     public class InstructorDAO : IDao<Instructor>

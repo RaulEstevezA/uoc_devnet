@@ -19,6 +19,7 @@ public class Sesion
 
     public override string ToString()
     {
-        return $"{Id}: actividad {ActividadId}, instructor {InstructorId}, inicio {FechaInicio}, fin {FechaFin}";
+        return $"{Id}: actividad {ActividadId}, instructor {InstructorId}, sala {SalaId}, " +
+               $"{FechaInicio:dd/MM HH:mm} - {FechaFin:HH:mm}";
     }
 }

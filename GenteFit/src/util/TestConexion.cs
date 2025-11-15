@@ -9,7 +9,7 @@ namespace GenteFit.src.util
         {
             Console.WriteLine("Probando conexión con la base de datos...");
 
-            string connectionString = "Server=ROG;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
+            string connectionString = "Server=localhost;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
 
             try
             {

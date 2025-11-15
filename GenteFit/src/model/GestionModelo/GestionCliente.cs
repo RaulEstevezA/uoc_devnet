@@ -1,28 +1,93 @@
-// Estas clases representan la gestión de clientes en el dominio de GenteFit.
-// Nos servirá para implementar la lógica de negocio relacionada con los clientes.
-// Hacen uso de factoryDAO y DAOs para interactuar con la base de datos.
-// Si es necesario harán uso de factory para acceder a XML u otros servicios.
-
 using GenteFit.src.DAO;
 using GenteFit.src.model.entity;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GenteFit.src.model.GestionModelo
 {
-    public class GestionCliente
+    public static class GestionCliente
     {
-        // Implementación de la gestión de clientes
+        private static readonly IDao<Cliente> clienteDao = FactoryDAO.GetClienteDAO();
+        private static readonly UsuarioDAO usuarioDao = (UsuarioDAO)FactoryDAO.GetUsuarioDAO();
 
-        // Ejemplo de método para agregar un cliente
-        public static void AgregarCliente(Cliente cliente)
+
+        // GET ALL CLIENTES (con Usuario cargado)
+        public static List<Cliente> GetAllClientes()
         {
-            // Lógica para agregar un cliente
-            var clienteDao = FactoryDAO.GetClienteDAO();
-            clienteDao.Save(cliente);
+            var clientes = clienteDao.GetAll().ToList();
+            var usuarios = usuarioDao.GetAll();
+
+            // unir cliente + usuario por ID (1–1)
+            foreach (var c in clientes)
+            {
+                c.Usuario = usuarios.FirstOrDefault(u => u.Id == c.Id);
+            }
+
+            return clientes;
         }
 
-        // Así con las diferentes funciones que necesitemos
+
+        // BUSCAR POR ID (correcto: buscar en Usuario)
+        public static Cliente? BuscarPorId(int id)
+        {
+            var usuario = usuarioDao.GetAll().FirstOrDefault(u => u.Id == id);
+            if (usuario == null) return null;
+
+            var cliente = clienteDao.GetAll().FirstOrDefault(c => c.Id == id);
+            if (cliente == null) return null;
+
+            cliente.Usuario = usuario;
+            return cliente;
+        }
+
+
+        // BUSCAR POR EMAIL DE USUARIO (login)
+        public static Cliente? BuscarPorEmailUsuario(string emailUsuario)
+        {
+            var usuario = usuarioDao.GetAll()
+                                    .FirstOrDefault(u => u.Email == emailUsuario);
+
+            if (usuario == null) return null;
+
+            var cliente = clienteDao.GetAll().FirstOrDefault(c => c.Id == usuario.Id);
+            if (cliente == null) return null;
+
+            cliente.Usuario = usuario;
+            return cliente;
+        }
+
+
+        // BUSCAR POR USERNAME DE USUARIO
+        public static Cliente? BuscarPorUsername(string username)
+        {
+            var usuario = usuarioDao.GetAll()
+                                    .FirstOrDefault(u => u.Username == username);
+
+            if (usuario == null) return null;
+
+            var cliente = clienteDao.GetAll().FirstOrDefault(c => c.Id == usuario.Id);
+            if (cliente == null) return null;
+
+            cliente.Usuario = usuario;
+            return cliente;
+        }
+
+
+        // LLAMADAS A LAS GESTIONES ESPECÍFICAS
+        public static void ModificarCliente(Cliente c)
+        {
+            GestionModificarCliente.ModificarCliente(c);
+        }
+
+        public static void ModificarUsuario(Usuario u)
+        {
+            GestionModificarUsuario.ModificarUsuario(u);
+        }
+
+        public static void DarDeBajaUsuario(Usuario u)
+        {
+            GestionBajaUsuario.BajaUsuario(u);
+        }
     }
 }
 
-
-// Esta clase será llamada desde el controlador de cliente en la capa de presentación.

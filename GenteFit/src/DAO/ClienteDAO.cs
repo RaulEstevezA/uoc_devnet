@@ -136,7 +136,7 @@ namespace GenteFit.src.DAO
         // elimina un cliente
         public void Delete(Cliente entity)
         {
-            var query = "DELETE FROM Cliente WHERE id = @Id";
+            var query = "UPDATE Cliente SET activo = 0 WHERE id = @Id";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -151,7 +151,7 @@ namespace GenteFit.src.DAO
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception("error al eliminar el cliente", ex);
+                throw new Exception("error al dar de baja el cliente", ex);
             }
         }
     }

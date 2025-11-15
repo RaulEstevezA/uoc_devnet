@@ -1,0 +1,42 @@
+<UserControl x:Class="GenteFit_WPF.Views.GestionClientesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+
+        <!-- FILAS: menu arriba + contenido dinámico abajo -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!-- SUBMENU HORIZONTAL -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Background="#EEEEEE"
+                    Margin="10">
+
+            <Button Content="Alta cliente"
+                    Margin="0 0 10 0"
+                    Click="BtnAltaCliente_Click"/>
+
+            <Button Content="Modificar cliente"
+                    Margin="0 0 10 0"
+                    Click="BtnModificarCliente_Click"/>
+
+            <Button Content="Baja cliente"
+                    Margin="0 0 10 0"
+                    Click="BtnBajaCliente_Click"/>
+
+        </StackPanel>
+
+
+        <!-- Zona donde cargaremos las vistas -->
+        <ContentControl Grid.Row="1" 
+                        x:Name="ClientesContentPresenter"/>
+
+    </Grid>
+
+</UserControl>
+

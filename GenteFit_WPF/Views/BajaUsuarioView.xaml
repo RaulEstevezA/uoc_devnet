@@ -1,0 +1,54 @@
+<UserControl x:Class="GenteFit_WPF.Views.BajaUsuarioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<StackPanel Margin="20">
+
+		<TextBlock Text="Baja de usuario" FontSize="20" Margin="0 0 0 20"/>
+
+		<!-- buscar por id -->
+		<TextBlock Text="Buscar por ID"/>
+		<StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+			<TextBox x:Name="BuscarIdTextBox" Width="150"/>
+			<Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorId_Click"/>
+		</StackPanel>
+
+		<!-- buscar por email -->
+		<TextBlock Text="Buscar por email"/>
+		<StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+			<TextBox x:Name="BuscarEmailTextBox" Width="150"/>
+			<Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorEmail_Click"/>
+		</StackPanel>
+
+		<!-- buscar por username -->
+		<TextBlock Text="Buscar por username"/>
+		<StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+			<TextBox x:Name="BuscarUsernameTextBox" Width="150"/>
+			<Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorUsername_Click"/>
+		</StackPanel>
+
+		<!-- datos del usuario -->
+		<TextBlock Text="ID"/>
+		<TextBox x:Name="IdTextBox" Width="200" IsReadOnly="True"/>
+
+		<TextBlock Text="Username"/>
+		<TextBox x:Name="UsernameTextBox" Width="200" IsReadOnly="True"/>
+
+		<!-- boton de baja -->
+		<Button x:Name="BtnBajaUsuario"
+                Content="Dar de baja usuario"
+                Width="200"
+                Margin="0 20 0 0"
+                Background="Red"
+                Foreground="White"
+                Click="BtnBajaUsuario_Click"/>
+
+	</StackPanel>
+
+</UserControl>

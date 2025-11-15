@@ -21,7 +21,10 @@ namespace GenteFit_WPF.Views
                     return;
                 }
 
-                int tipoRolId = int.Parse(item.Tag.ToString());
+                int tipoRolId = int.TryParse(item?.Tag?.ToString(), out int result)
+                    ? result
+                    : 0;
+
 
                 GestionAltaUsuario.CrearUsuario(
                     UsernameTextBox.Text,

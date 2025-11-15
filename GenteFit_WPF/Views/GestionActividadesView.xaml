@@ -1,0 +1,38 @@
+<UserControl x:Class="GenteFit_WPF.Views.GestionActividadesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- submenu horizontal -->
+		<StackPanel Orientation="Horizontal" Background="#EEEEEE" Margin="10">
+
+			<Button Content="Alta actividad"
+                    Margin="0 0 10 0"
+                    Click="BtnAlta_Click"/>
+
+			<Button Content="Mostrar todas"
+                    Margin="0 0 10 0"
+                    Click="BtnMostrar_Click"/>
+
+			<Button Content="Modificar actividad"
+                    Margin="0 0 10 0"
+                    Click="BtnModificar_Click"/>
+
+			<Button Content="Eliminar actividad"
+                    Margin="0 0 10 0"
+                    Click="BtnEliminar_Click"/>
+		</StackPanel>
+
+		<!-- contenido dinamico -->
+		<ContentControl Grid.Row="1"
+                        x:Name="ActividadesContentPresenter"/>
+
+	</Grid>
+</UserControl>
+

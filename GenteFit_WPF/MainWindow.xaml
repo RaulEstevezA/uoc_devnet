@@ -19,6 +19,7 @@
 			<Button Content="Gestion Cliente" Margin="10,5,10,5" Click="BtnGestionClientes_Click"/>
 			<Button Content="Alta Instructor" Margin="10,5,10,5" Click="BtnAltaInstructor_Click"/>
 			<Button Content="Gestion Usuario" Margin="10,5,10,5" Click="BtnGestionUsuarios_Click"/>
+            <Button Content="Gestion Actividades" Margin="10,5,10,5" Click="BtnGestionActividades_Click"/>
 
 
 			<!--

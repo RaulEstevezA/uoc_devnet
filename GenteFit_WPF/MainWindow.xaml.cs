@@ -18,10 +18,6 @@ namespace GenteFit_WPF
             VistaPrincipal.Content = new ReservaActView(); // Vista1 es un UserControl
         }
         
-        private void BtnSala_Click(object sender, RoutedEventArgs e)
-        {
-            VistaPrincipal.Content = new SalaView();
-        }
 
         // boton gestion cliente
         private void BtnGestionClientes_Click(object sender, RoutedEventArgs e)
@@ -51,6 +47,12 @@ namespace GenteFit_WPF
         private void BtnGestionActividades_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionActividadesView();
+        }
+
+        // gestion salas
+        private void BtnGestionSalas_Click(object sender, RoutedEventArgs e)
+        {
+            VistaPrincipal.Content = new GestionSalasView();
         }
 
 

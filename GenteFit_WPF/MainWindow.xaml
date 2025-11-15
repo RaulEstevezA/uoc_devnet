@@ -14,13 +14,12 @@
 
         <!-- Columna fija de navegación -->
         <StackPanel Grid.Column="0" Background="LightGray">
-            <Button Content="Reservar Actividades" Margin="10,5,10,5" Click="BtnReservas_Click"/>            
-            <Button Content="Mostrar Salas" Margin="10,5,10,5" Click="BtnSala_Click" RenderTransformOrigin="0.501,-0.36"/>
-			<Button Content="Gestion Cliente" Margin="10,5,10,5" Click="BtnGestionClientes_Click"/>
+            <Button Content="Reservar Actividades" Margin="10,5,10,5" Click="BtnReservas_Click"/>
+            <Button Content="Gestion Cliente" Margin="10,5,10,5" Click="BtnGestionClientes_Click"/>
 			<Button Content="Alta Instructor" Margin="10,5,10,5" Click="BtnAltaInstructor_Click"/>
 			<Button Content="Gestion Usuario" Margin="10,5,10,5" Click="BtnGestionUsuarios_Click"/>
             <Button Content="Gestion Actividades" Margin="10,5,10,5" Click="BtnGestionActividades_Click"/>
-
+            <Button Content="Gestion Salas"        Margin="10,5,10,5" Click="BtnGestionSalas_Click"/>
 
 			<!--
             <Button Content="Vista 3" Margin="10" Click="BtnVista3_Click"/>

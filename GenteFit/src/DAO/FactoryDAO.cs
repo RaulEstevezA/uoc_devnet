@@ -12,5 +12,7 @@ namespace GenteFit.src.DAO
         public static IDao<Usuario> GetUsuarioDAO() => new UsuarioDAO();
         public static IDao<Reserva> GetReservaDAO() => new ReservaDAO();
         public static IDao<Sesion> GetSesionDAO() => new SesionDAO();
+        public static IDao<ReservaCancelada> GetReservaCanceladaDAO() => new ReservaCanceladaDAO();
+
     }
 }

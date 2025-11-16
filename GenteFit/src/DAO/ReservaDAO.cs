@@ -12,7 +12,7 @@ namespace GenteFit.src.DAO
         // obtiene una reserva por id
         public Reserva? GetById(int id)
         {
-            var query = @"SELECT Id, ClienteId, SesionId, EstadoReservaId, FechaReserva, PosicionEspera 
+            var query = @"SELECT Id, ClienteId, SesionId, EstadoReserva, FechaReserva, PosicionEspera 
                           FROM Reserva WHERE Id = @Id";
 
             try
@@ -47,7 +47,7 @@ namespace GenteFit.src.DAO
         public IEnumerable<Reserva> GetAll()
         {
             var lista = new List<Reserva>();
-            var query = @"SELECT Id, ClienteId, SesionId, EstadoReservaId, FechaReserva, PosicionEspera 
+            var query = @"SELECT Id, ClienteId, SesionId, EstadoReserva, FechaReserva, PosicionEspera 
                           FROM Reserva";
 
             try
@@ -80,8 +80,8 @@ namespace GenteFit.src.DAO
         public void Save(Reserva entity)
         {
             var query = @"INSERT INTO Reserva 
-                         (ClienteId, SesionId, EstadoReservaId, FechaReserva, PosicionEspera)
-                         VALUES (@ClienteId, @SesionId, @EstadoReservaId, @FechaReserva, @PosicionEspera)";
+                         (ClienteId, SesionId, EstadoReserva, FechaReserva, PosicionEspera)
+                         VALUES (@ClienteId, @SesionId, @EstadoReserva, @FechaReserva, @PosicionEspera)";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -91,7 +91,7 @@ namespace GenteFit.src.DAO
 
                 cmd.Parameters.AddWithValue("@ClienteId", entity.ClienteId);
                 cmd.Parameters.AddWithValue("@SesionId", entity.SesionId);
-                cmd.Parameters.AddWithValue("@EstadoReservaId", (int)entity.EstadoReserva);
+                cmd.Parameters.AddWithValue("@EstadoReserva", (int)entity.EstadoReserva);
                 cmd.Parameters.AddWithValue("@FechaReserva", entity.FechaReserva);
                 cmd.Parameters.AddWithValue("@PosicionEspera", (object?)entity.PosicionEspera ?? DBNull.Value);
 
@@ -111,7 +111,7 @@ namespace GenteFit.src.DAO
             var query = @"UPDATE Reserva SET 
                             ClienteId = @ClienteId,
                             SesionId = @SesionId,
-                            EstadoReservaId = @EstadoReservaId,
+                            EstadoReserva = @EstadoReserva,
                             FechaReserva = @FechaReserva,
                             PosicionEspera = @PosicionEspera
                           WHERE Id = @Id";
@@ -125,7 +125,7 @@ namespace GenteFit.src.DAO
                 cmd.Parameters.AddWithValue("@Id", entity.Id);
                 cmd.Parameters.AddWithValue("@ClienteId", entity.ClienteId);
                 cmd.Parameters.AddWithValue("@SesionId", entity.SesionId);
-                cmd.Parameters.AddWithValue("@EstadoReservaId", (int)entity.EstadoReserva);
+                cmd.Parameters.AddWithValue("@EstadoReserva", (int)entity.EstadoReserva);
                 cmd.Parameters.AddWithValue("@FechaReserva", entity.FechaReserva);
                 cmd.Parameters.AddWithValue("@PosicionEspera", (object?)entity.PosicionEspera ?? DBNull.Value);
 
@@ -162,4 +162,5 @@ namespace GenteFit.src.DAO
         }
     }
 }
+
 

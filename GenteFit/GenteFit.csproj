@@ -22,8 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="src\DAO\" />
-    <Folder Include="src\model\entity\" />
     <Folder Include="src\model\enums\" />
     <Folder Include="src\util\" />
   </ItemGroup>

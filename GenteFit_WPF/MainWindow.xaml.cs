@@ -1,75 +1,67 @@
 ﻿using System.Windows;
+using GenteFit.src.model.entity;
 using GenteFit_WPF.Views;
 
 namespace GenteFit_WPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly Usuario _usuarioLogueado;
+
+        // Propiedad pública para que otras vistas accedan al usuario
+        public Usuario UsuarioLogueado => _usuarioLogueado;
+
+        public MainWindow(Usuario usuarioLogueado)
         {
             InitializeComponent();
+            _usuarioLogueado = usuarioLogueado;
+
+            this.Title = $"GenteFit - Bienvenido, {_usuarioLogueado.Username}";
         }
 
-        private void BtnReservas_Click(object sender, RoutedEventArgs e)
+        private void BtnMisReservas_Click(object sender, RoutedEventArgs e)
         {
-            VistaPrincipal.Content = new ReservaActView(); // Vista1 es un UserControl
+            VistaPrincipal.Content = new MisReservasView();
         }
-        
 
-        // boton gestion cliente
         private void BtnGestionClientes_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionClientesView();
         }
 
-        // boton alta instructor
         private void BtnAltaInstructor_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new AltaInstructorView();
         }
 
-        // boton alta usuario
         private void BtnAltaUsuario_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new AltaUsuarioView();
         }
 
-        // gestion usuarios
         private void BtnGestionUsuarios_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionUsuariosView();
         }
 
-        // gestion actividades
         private void BtnGestionActividades_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionActividadesView();
         }
 
-        // gestion salas
         private void BtnGestionSalas_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionSalasView();
         }
 
-        // gestion sesiones
         private void BtnGestionSesiones_Click(object sender, RoutedEventArgs e)
         {
             VistaPrincipal.Content = new GestionSesionesView();
         }
 
-
-
-
-
-        /*
-        private void BtnVista3_Click(object sender, RoutedEventArgs e)
+        private void BtnReservas_Click(object sender, RoutedEventArgs e)
         {
-            VistaPrincipal.Content = new Vista3();
+            VistaPrincipal.Content = new ReservasView();
         }
-        */
     }
 }

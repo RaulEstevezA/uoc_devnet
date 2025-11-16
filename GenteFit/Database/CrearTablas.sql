@@ -90,7 +90,7 @@ CREATE TABLE Reserva (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     ClienteId INT NOT NULL,
     SesionId INT NOT NULL,
-    EstadoReserva NVARCHAR(20) NOT NULL,  -- ahora se guarda el nombre del estado directamente
+    EstadoReserva INT NOT NULL,
     FechaReserva DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     PosicionEspera INT NULL,
     CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteId)
@@ -98,8 +98,27 @@ CREATE TABLE Reserva (
     CONSTRAINT FK_Reserva_Sesion FOREIGN KEY (SesionId)
         REFERENCES Sesion(Id),
     CONSTRAINT UQ_Reserva_Cliente_Sesion UNIQUE (ClienteId, SesionId),
-    CONSTRAINT CK_Reserva_Posicion CHECK (PosicionEspera IS NULL OR PosicionEspera > 0)
+    CONSTRAINT CK_Reserva_Estado CHECK (EstadoReserva BETWEEN 1 AND 4)
 );
+
+CREATE TABLE ReservaCancelada (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ClienteId INT NOT NULL,
+    SesionId INT NOT NULL,
+    FechaCancelacion DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
+    Motivo NVARCHAR(200) NULL,
+
+    -- datos útiles para informes
+    PosicionEnCancelacion INT NULL,
+    EstadoPrevio NVARCHAR(20) NOT NULL,
+
+    CONSTRAINT FK_ReservaCancelada_Cliente FOREIGN KEY (ClienteId)
+        REFERENCES Cliente(Id),
+
+    CONSTRAINT FK_ReservaCancelada_Sesion FOREIGN KEY (SesionId)
+        REFERENCES Sesion(Id)
+);
+
 
 
 -- =============================================

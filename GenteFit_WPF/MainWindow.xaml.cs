@@ -55,6 +55,13 @@ namespace GenteFit_WPF
             VistaPrincipal.Content = new GestionSalasView();
         }
 
+        // gestion sesiones
+        private void BtnGestionSesiones_Click(object sender, RoutedEventArgs e)
+        {
+            VistaPrincipal.Content = new GestionSesionesView();
+        }
+
+
 
 
 

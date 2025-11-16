@@ -73,12 +73,15 @@ CREATE TABLE Sesion (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     ActividadId INT NOT NULL,
     InstructorId INT NOT NULL,
+    SalaId INT NOT NULL,
     FechaInicio DATETIME2 NOT NULL,
     FechaFin DATETIME2 NOT NULL,
     CONSTRAINT FK_Sesion_Actividad FOREIGN KEY (ActividadId)
         REFERENCES Actividad(Id),
     CONSTRAINT FK_Sesion_Instructor FOREIGN KEY (InstructorId)
-        REFERENCES Instructor(id),
+        REFERENCES Instructor(Id),
+    CONSTRAINT FK_Sesion_Sala FOREIGN KEY (SalaId)
+        REFERENCES Sala(Id),
     CONSTRAINT CK_Sesion_RangoHoras CHECK (FechaFin > FechaInicio)
 );
 

@@ -8,10 +8,7 @@ namespace GenteFit_WPF.Views
         public MostrarSalasView()
         {
             InitializeComponent();
-
-            // se puede usar GetAll() o ObtenerSalas(), ambas existen
             SalasDataGrid.ItemsSource = GestionSala.ObtenerSalas();
         }
     }
 }
-

@@ -66,7 +66,7 @@ namespace GenteFit.src.DAO
         public IEnumerable<Instructor> GetAll()
         {
             var lista = new List<Instructor>();
-            var query = "SELECT id, nombre, apellido1, apellido2, email FROM Instructor";
+            var query = "SELECT id, nombre, apellido1, apellido2 FROM Instructor";
 
             try
             {
@@ -81,7 +81,6 @@ namespace GenteFit.src.DAO
                         Nombre = reader.GetString(1),
                         Apellido1 = reader.GetString(2),
                         Apellido2 = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        Email = reader.IsDBNull(4) ? null : reader.GetString(4)
                     });
                 }
             }

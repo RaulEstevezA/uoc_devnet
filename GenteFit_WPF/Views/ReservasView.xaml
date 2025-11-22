@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="GenteFit_WPF.Views.ReservasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- CALENDARIO + LEYENDA -->
+        <StackPanel Grid.Column="0" Margin="0,0,20,0">
+            <TextBlock Text="Reservar sesiones" 
+                       FontSize="20" 
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+
+            <!-- FIX: Usar 'SelectedDatesChanged' en vez de 'SelectedDateChanged' -->
+            <Calendar x:Name="CalendarioSesiones"
+                      SelectedDatesChanged="CalendarioSesiones_SelectedDatesChanged" />
+
+
+            <!-- LEYENDA -->
+            <StackPanel Margin="0,15,0,0">
+                <TextBlock Text="Leyenda:" FontWeight="Bold" />
+
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <Ellipse Width="14" Height="14" Fill="Gray" Stroke="Black" Margin="0,0,6,0"/>
+                    <TextBlock Text="Disponible / sin reserva"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <Ellipse Width="14" Height="14" Fill="Yellow" Stroke="Black" Margin="0,0,6,0"/>
+                    <TextBlock Text="En lista de espera"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <Ellipse Width="14" Height="14" Fill="Green" Stroke="Black" Margin="0,0,6,0"/>
+                    <TextBlock Text="Reservada"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- LISTADO SESIONES -->
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Sesiones del día"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Margin="0,0,0,10"/>
+
+            <ListBox x:Name="ListaSesionesDia"
+                     SelectionChanged="ListaSesionesDia_SelectionChanged"
+                     BorderBrush="Gray"
+                     BorderThickness="1"
+                     Height="300"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

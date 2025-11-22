@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="GenteFit_WPF.Views.ModificarSesionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20" Width="300">
+
+        <TextBlock Text="MODIFICAR SESIÓN"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Margin="0 0 0 15"/>
+
+        <!-- Buscar sesión -->
+        <TextBlock Text="ID de sesión:"/>
+        <TextBox x:Name="IdSesionTextBox"/>
+        <Button Content="Buscar"
+                Margin="0 10 0 20"
+                Click="Buscar_Click"/>
+
+        <!-- Campos modificables -->
+        <TextBlock Text="Actividad:"/>
+        <ComboBox x:Name="ActividadCombo" />
+
+        <TextBlock Text="Instructor:"/>
+        <ComboBox x:Name="InstructorCombo" />
+
+        <TextBlock Text="Sala:"/>
+        <ComboBox x:Name="SalaCombo" />
+
+        <TextBlock Text="Fecha:"/>
+        <DatePicker x:Name="FechaPicker"/>
+
+        <TextBlock Text="Hora inicio (HH:mm):"/>
+        <TextBox x:Name="HoraInicioTextBox"/>
+
+        <Button Content="Guardar Cambios"
+                Margin="0 15 0 0"
+                Click="GuardarCambios_Click"/>
+    </StackPanel>
+</UserControl>
+
+

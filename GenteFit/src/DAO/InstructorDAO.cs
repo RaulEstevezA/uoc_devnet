@@ -2,10 +2,6 @@ using GenteFit.src.model.entity;
 using GenteFit.src.util;
 using Microsoft.Data.SqlClient;
 
-using GenteFit.src.model.entity;
-using GenteFit.src.util;
-using Microsoft.Data.SqlClient;
-
 namespace GenteFit.src.DAO
 {
     public class InstructorDAO : IDao<Instructor>
@@ -70,7 +66,7 @@ namespace GenteFit.src.DAO
         public IEnumerable<Instructor> GetAll()
         {
             var lista = new List<Instructor>();
-            var query = "SELECT id, nombre, apellido1, apellido2, email FROM Instructor";
+            var query = "SELECT id, nombre, apellido1, apellido2 FROM Instructor";
 
             try
             {
@@ -85,7 +81,6 @@ namespace GenteFit.src.DAO
                         Nombre = reader.GetString(1),
                         Apellido1 = reader.GetString(2),
                         Apellido2 = reader.IsDBNull(3) ? null : reader.GetString(3),
-                        Email = reader.IsDBNull(4) ? null : reader.GetString(4)
                     });
                 }
             }
@@ -100,8 +95,9 @@ namespace GenteFit.src.DAO
         // guarda un instructor
         public void Save(Instructor entity)
         {
-            var query = @"INSERT INTO Instructor (id, nombre, apellido1, apellido2, email)
-                          VALUES (@Id, @Nombre, @Apellido1, @Apellido2, @Email)";
+            var query = @"INSERT INTO Instructor (id, nombre, apellido1, apellido2)
+              VALUES (@Id, @Nombre, @Apellido1, @Apellido2)";
+
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -113,7 +109,6 @@ namespace GenteFit.src.DAO
                 cmd.Parameters.AddWithValue("@Nombre", entity.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido1", entity.Apellido1);
                 cmd.Parameters.AddWithValue("@Apellido2", (object?)entity.Apellido2 ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@Email", (object?)entity.Email ?? DBNull.Value);
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
@@ -129,7 +124,7 @@ namespace GenteFit.src.DAO
         public void Update(Instructor entity)
         {
             var query = @"UPDATE Instructor 
-                          SET nombre = @Nombre, apellido1 = @Apellido1, apellido2 = @Apellido2, email = @Email
+                          SET nombre = @Nombre, apellido1 = @Apellido1, apellido2 = @Apellido2,
                           WHERE id = @Id";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
@@ -142,7 +137,6 @@ namespace GenteFit.src.DAO
                 cmd.Parameters.AddWithValue("@Nombre", entity.Nombre);
                 cmd.Parameters.AddWithValue("@Apellido1", entity.Apellido1);
                 cmd.Parameters.AddWithValue("@Apellido2", (object?)entity.Apellido2 ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@Email", (object?)entity.Email ?? DBNull.Value);
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();

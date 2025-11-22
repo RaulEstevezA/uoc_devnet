@@ -8,11 +8,14 @@ namespace GenteFit.src.DAO
     {
         public UsuarioDAO() { }
 
-        // obtiene un usuario por id
+
+        // obtener usuario por id
         public Usuario? GetById(int id)
         {
-            var query = @"SELECT id, username, email, passwordHash, tipoRol, activo, creadoEn 
-                          FROM Usuario WHERE id = @Id";
+            string query = @"
+                SELECT Id, Username, Email, PasswordHash, TipoRolId, Activo, CreadoEn 
+                FROM Usuario 
+                WHERE Id = @Id";
 
             try
             {
@@ -29,7 +32,7 @@ namespace GenteFit.src.DAO
                         Username = reader.GetString(1),
                         Email = reader.GetString(2),
                         PasswordHash = reader.GetString(3),
-                        TipoRol = reader.GetString(4),
+                        TipoRolId = reader.GetInt32(4),
                         Activo = reader.GetBoolean(5),
                         CreadoEn = reader.GetDateTime(6)
                     };
@@ -37,18 +40,20 @@ namespace GenteFit.src.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("error al obtener el usuario por id", ex);
+                throw new Exception("Error al obtener el usuario por ID", ex);
             }
 
             return null;
         }
 
-        // obtiene todos los usuarios
+        // obtener todos usuarios
         public IEnumerable<Usuario> GetAll()
         {
             var lista = new List<Usuario>();
-            var query = @"SELECT id, username, email, passwordHash, tipoRol, activo, creadoEn 
-                          FROM Usuario";
+
+            string query = @"
+                SELECT Id, Username, Email, PasswordHash, TipoRolId, Activo, CreadoEn 
+                FROM Usuario";
 
             try
             {
@@ -63,7 +68,7 @@ namespace GenteFit.src.DAO
                         Username = reader.GetString(1),
                         Email = reader.GetString(2),
                         PasswordHash = reader.GetString(3),
-                        TipoRol = reader.GetString(4),
+                        TipoRolId = reader.GetInt32(4),
                         Activo = reader.GetBoolean(5),
                         CreadoEn = reader.GetDateTime(6)
                     });
@@ -71,17 +76,19 @@ namespace GenteFit.src.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("error al obtener la lista de usuarios", ex);
+                throw new Exception("Error al obtener la lista de usuarios", ex);
             }
 
             return lista;
         }
 
-        // busca un usuario por username
+        // Buscar por nombre de usuarui
         public Usuario? GetByUsername(string username)
         {
-            var query = @"SELECT id, username, email, passwordHash, tipoRol, activo, creadoEn
-                          FROM Usuario WHERE username = @Username";
+            string query = @"
+                SELECT Id, Username, Email, PasswordHash, TipoRolId, Activo, CreadoEn
+                FROM Usuario 
+                WHERE Username = @Username";
 
             try
             {
@@ -98,7 +105,7 @@ namespace GenteFit.src.DAO
                         Username = reader.GetString(1),
                         Email = reader.GetString(2),
                         PasswordHash = reader.GetString(3),
-                        TipoRol = reader.GetString(4),
+                        TipoRolId = reader.GetInt32(4),
                         Activo = reader.GetBoolean(5),
                         CreadoEn = reader.GetDateTime(6)
                     };
@@ -106,17 +113,19 @@ namespace GenteFit.src.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("error al obtener usuario por username", ex);
+                throw new Exception("Error al obtener usuario por Username", ex);
             }
 
             return null;
         }
 
-        // busca un usuario por email
+        // buscar por email
         public Usuario? GetByEmail(string email)
         {
-            var query = @"SELECT id, username, email, passwordHash, tipoRol, activo, creadoEn
-                          FROM Usuario WHERE email = @Email";
+            string query = @"
+                SELECT Id, Username, Email, PasswordHash, TipoRolId, Activo, CreadoEn
+                FROM Usuario 
+                WHERE Email = @Email";
 
             try
             {
@@ -133,7 +142,7 @@ namespace GenteFit.src.DAO
                         Username = reader.GetString(1),
                         Email = reader.GetString(2),
                         PasswordHash = reader.GetString(3),
-                        TipoRol = reader.GetString(4),
+                        TipoRolId = reader.GetInt32(4),
                         Activo = reader.GetBoolean(5),
                         CreadoEn = reader.GetDateTime(6)
                     };
@@ -141,17 +150,18 @@ namespace GenteFit.src.DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("error al obtener usuario por email", ex);
+                throw new Exception("Error al obtener usuario por Email", ex);
             }
 
             return null;
         }
 
-        // guarda un usuario
+        // guardar usuario
         public void Save(Usuario entity)
         {
-            var query = @"INSERT INTO Usuario (username, email, passwordHash, tipoRol, activo) 
-                          VALUES (@Username, @Email, @PasswordHash, @TipoRol, @Activo)";
+            string query = @"
+                INSERT INTO Usuario (Username, Email, PasswordHash, TipoRolId, Activo)
+                VALUES (@Username, @Email, @PasswordHash, @TipoRolId, @Activo)";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -162,7 +172,7 @@ namespace GenteFit.src.DAO
                 cmd.Parameters.AddWithValue("@Username", entity.Username);
                 cmd.Parameters.AddWithValue("@Email", entity.Email);
                 cmd.Parameters.AddWithValue("@PasswordHash", entity.PasswordHash);
-                cmd.Parameters.AddWithValue("@TipoRol", entity.TipoRol);
+                cmd.Parameters.AddWithValue("@TipoRolId", entity.TipoRolId);
                 cmd.Parameters.AddWithValue("@Activo", entity.Activo);
 
                 cmd.ExecuteNonQuery();
@@ -171,17 +181,21 @@ namespace GenteFit.src.DAO
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception("error al guardar el usuario", ex);
+                throw new Exception("Error al guardar usuario", ex);
             }
         }
 
-        // actualiza un usuario
+        // actualizar usuario
         public void Update(Usuario entity)
         {
-            var query = @"UPDATE Usuario 
-                          SET username = @Username, email = @Email, passwordHash = @PasswordHash,
-                              tipoRol = @TipoRol, activo = @Activo
-                          WHERE id = @Id";
+            string query = @"
+                UPDATE Usuario
+                SET Username = @Username,
+                    Email = @Email,
+                    PasswordHash = @PasswordHash,
+                    TipoRolId = @TipoRolId,
+                    Activo = @Activo
+                WHERE Id = @Id";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -193,7 +207,7 @@ namespace GenteFit.src.DAO
                 cmd.Parameters.AddWithValue("@Username", entity.Username);
                 cmd.Parameters.AddWithValue("@Email", entity.Email);
                 cmd.Parameters.AddWithValue("@PasswordHash", entity.PasswordHash);
-                cmd.Parameters.AddWithValue("@TipoRol", entity.TipoRol);
+                cmd.Parameters.AddWithValue("@TipoRolId", entity.TipoRolId);
                 cmd.Parameters.AddWithValue("@Activo", entity.Activo);
 
                 cmd.ExecuteNonQuery();
@@ -202,14 +216,14 @@ namespace GenteFit.src.DAO
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception("error al actualizar el usuario", ex);
+                throw new Exception("Error al actualizar usuario", ex);
             }
         }
 
-        // elimina un usuario
+        // eliminar usuario
         public void Delete(Usuario entity)
         {
-            var query = "DELETE FROM Usuario WHERE id = @Id";
+            string query = "DELETE FROM Usuario WHERE Id = @Id";
 
             using var transaction = ConexionDb.Instance.Connection.BeginTransaction();
 
@@ -224,8 +238,9 @@ namespace GenteFit.src.DAO
             catch (Exception ex)
             {
                 transaction.Rollback();
-                throw new Exception("error al eliminar el usuario", ex);
+                throw new Exception("Error al eliminar usuario", ex);
             }
         }
     }
 }
+

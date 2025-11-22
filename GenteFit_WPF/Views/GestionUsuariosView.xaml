@@ -1,0 +1,37 @@
+<UserControl x:Class="GenteFit_WPF.Views.GestionUsuariosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- SUBMENU DE USUARIOS -->
+		<StackPanel Orientation="Horizontal"
+                    Background="#EEEEEE"
+                    Margin="10">
+
+			<Button Content="Alta usuario"
+                    Margin="0 0 10 0"
+                    Click="BtnAltaUsuario_Click"/>
+
+			<Button Content="Modificar usuario"
+                    Margin="0 0 10 0"
+                    Click="BtnModificarUsuario_Click"/>
+
+			<Button Content="Baja usuario"
+                    Margin="0 0 10 0"
+                    Click="BtnBajaUsuario_Click"/>
+
+		</StackPanel>
+
+		<!-- AQUI SE CARGAN LAS VISTAS DINAMICAMENTE -->
+		<ContentControl Grid.Row="1"
+                        x:Name="UsuariosContentPresenter"/>
+
+	</Grid>
+</UserControl>
+

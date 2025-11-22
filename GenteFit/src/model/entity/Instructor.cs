@@ -15,4 +15,10 @@ public class Instructor
     {
         return $"{Id}: {Nombre} {Apellido1} {(string.IsNullOrWhiteSpace(Apellido2) ? "" : Apellido2)}";
     }
+
+    public string NombreCompleto
+    {
+        get { return $"{Nombre} {Apellido1}"; }
+    }
+
 }

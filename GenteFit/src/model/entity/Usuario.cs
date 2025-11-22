@@ -8,7 +8,7 @@ public class Usuario
     public string Username { get; set; } = "";
     public string Email { get; set; } = "";
     public string PasswordHash { get; set; } = "";
-    public string TipoRol { get; set; } = "CLIENTE";
+    public int TipoRolId { get; set; }
     public bool Activo { get; set; } = true;
     public DateTime CreadoEn { get; set; } = DateTime.Now;
 
@@ -18,6 +18,6 @@ public class Usuario
 
     public override string ToString()
     {
-        return $"{Id}: {Username}, rol {TipoRol}, activo {Activo}";
+        return $"{Id}: {Username}, rol {TipoRolId}, activo {Activo}";
     }
 }

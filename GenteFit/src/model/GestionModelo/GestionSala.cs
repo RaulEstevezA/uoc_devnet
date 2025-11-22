@@ -1,43 +1,73 @@
-﻿using GenteFit.src.DAO;
+using System.Collections.Generic;
+using GenteFit.src.DAO;
 using GenteFit.src.model.entity;
 
 namespace GenteFit.src.model.GestionModelo
 {
-    public class GestionSala
+    public static class GestionSala
     {
-        // Crear (Agregar)
-        public static void AgregarSala(Sala sala)
+        private static SalaDAO GetDao()
         {
-            var salaDao = FactoryDAO.GetSalaDAO();
-            salaDao.Save(sala);
+            return (SalaDAO)FactoryDAO.GetSalaDAO();
         }
 
-        // Leer (Obtener todas)
+        // listar todas las salas
         public static IEnumerable<Sala> ObtenerSalas()
         {
-            var salaDao = FactoryDAO.GetSalaDAO();
-            return salaDao.GetAll();
+            return GetDao().GetAll();
         }
 
-        // Leer (Obtener por Id)
+        // compatibilidad con codigo antiguo que llamaba GetAll()
+        public static IEnumerable<Sala> GetAll()
+        {
+            return ObtenerSalas();
+        }
+
+        // obtener sala por id
         public static Sala? ObtenerSalaPorId(int id)
         {
-            var salaDao = FactoryDAO.GetSalaDAO();
-            return salaDao.GetById(id);
+            return GetDao().GetById(id);
         }
 
-        // Actualizar
+        // crear sala
+        public static void AgregarSala(Sala sala)
+        {
+            GetDao().Save(sala);
+        }
+
+        // actualizar sala
         public static void ActualizarSala(Sala sala)
         {
-            var salaDao = FactoryDAO.GetSalaDAO();
-            salaDao.Update(sala);
+            GetDao().Update(sala);
         }
 
-        // Eliminar
+        // eliminar sala fisicamente
         public static void EliminarSala(Sala sala)
         {
-            var salaDao = FactoryDAO.GetSalaDAO();
-            salaDao.Delete(sala);
+            GetDao().Delete(sala);
+        }
+
+        // dar de baja (marcar como no disponible)
+        public static void DarDeBaja(Sala sala)
+        {
+            sala.Disponible = false;
+            GetDao().Update(sala);
+        }
+
+        public static void AltaSala(Sala sala)
+        {
+            AgregarSala(sala);
+        }
+
+        public static Sala? BuscarPorId(int id)
+        {
+            return ObtenerSalaPorId(id);
+        }
+
+        public static void ModificarSala(Sala sala)
+        {
+            ActualizarSala(sala);
         }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿namespace GenteFit_WPF.ViewModels
+﻿namespace GenteFit_WPF.ViewModel
 {
     public class SesionListadoVM
     {

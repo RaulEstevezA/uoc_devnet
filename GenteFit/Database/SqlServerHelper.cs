@@ -10,7 +10,7 @@ namespace GenteFit.Database
         public static async Task<bool> TestConnectionAsync(string connectionString, CancellationToken ct = default)
         {
             if (string.IsNullOrWhiteSpace(connectionString))
-                throw new ArgumentException("La cadena de conexión está vacía.", nameof(connectionString));
+                throw new ArgumentException("La cadena de conexiï¿½n estï¿½ vacï¿½a.", nameof(connectionString));
 
             try
             {

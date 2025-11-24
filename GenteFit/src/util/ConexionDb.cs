@@ -7,7 +7,7 @@ namespace GenteFit.src.util
         private static ConexionDb? _instance;
         private readonly SqlConnection _connection;
 
-        // Cambia la cadena de conexi髇 seg鷑 tu configuraci髇
+        // Cambia la cadena de conexi贸n seg煤n tu configuraci贸n
         private const string ConnectionString = "Server=localhost;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
 
         private ConexionDb()
@@ -46,6 +46,6 @@ namespace GenteFit.src.util
 
 // Como se usa?
 
-// var  = ConixionDb.Instance.Connection; // Obtiene la conexi髇 SQL
-// // Usar la conexi髇...
-// ConixionDb.Instance.CloseConnection(); // Cierra la conexi髇 cuando ya no se necesite
+// var  = ConixionDb.Instance.Connection; // Obtiene la conexi贸n SQL
+// // Usar la conexi贸n...
+// ConixionDb.Instance.CloseConnection(); // Cierra la conexi锟絥 cuando ya no se necesite

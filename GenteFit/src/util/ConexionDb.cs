@@ -1,4 +1,6 @@
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace GenteFit.src.util
 {
@@ -6,13 +8,20 @@ namespace GenteFit.src.util
     {
         private static ConexionDb? _instance;
         private readonly SqlConnection _connection;
-
-        // Cambia la cadena de conexión según tu configuración
-        private const string ConnectionString = "Server=localhost;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
+        private static string? _connectionString;
 
         private ConexionDb()
         {
-            _connection = new SqlConnection(ConnectionString);
+            if (_connectionString == null)
+            {
+                var config = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+
+                _connectionString = config.GetConnectionString("GenteFitDb");
+            }
+            _connection = new SqlConnection(_connectionString);
         }
 
         public static ConexionDb Instance

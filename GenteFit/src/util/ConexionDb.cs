@@ -8,7 +8,7 @@ namespace GenteFit.src.util
         private readonly SqlConnection _connection;
 
         // Cambia la cadena de conexi�n seg�n tu configuraci�n
-        private const string ConnectionString = "Server=DESKTOP-F7NO4ST\\LOCALHOST;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
+        private const string ConnectionString = "Server=localhost;Database=GenteFit;User Id=sa;Password=Passw0rd!;Encrypt=True;TrustServerCertificate=True";
 
         private ConexionDb()
         {

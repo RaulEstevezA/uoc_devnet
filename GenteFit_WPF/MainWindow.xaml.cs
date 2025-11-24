@@ -83,7 +83,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("MisReservas"))
             {
-                MessageBox.Show("Funcionalidad de Mis Reservas");
+                VistaPrincipal.Content = new MisReservasView();
             }
             else
             {
@@ -95,7 +95,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("ReservarActividades"))
             {
-                MessageBox.Show("Funcionalidad de Reservar Actividades");
+                VistaPrincipal.Content = new ReservasView();
             }
             else
             {
@@ -107,7 +107,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("GestionClientes"))
             {
-                MessageBox.Show("Funcionalidad de Gestión de Clientes");
+                VistaPrincipal.Content = new GestionClientesView();
             }
             else
             {
@@ -119,7 +119,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("AltaInstructor"))
             {
-                MessageBox.Show("Funcionalidad de Alta de Instructor");
+                VistaPrincipal.Content = new AltaInstructorView();
             }
             else
             {
@@ -131,7 +131,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("GestionUsuarios"))
             {
-                MessageBox.Show("Funcionalidad de Gestión de Usuarios");
+                VistaPrincipal.Content = new GestionUsuariosView();
             }
             else
             {
@@ -143,7 +143,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("GestionActividades"))
             {
-                MessageBox.Show("Funcionalidad de Gestión de Actividades");
+                VistaPrincipal.Content = new GestionActividadesView();
             }
             else
             {
@@ -155,7 +155,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("GestionSalas"))
             {
-                MessageBox.Show("Funcionalidad de Gestión de Salas");
+                 VistaPrincipal.Content = new GestionSalasView();
             }
             else
             {
@@ -167,7 +167,7 @@ namespace GenteFit_WPF
         {
             if (TienePermisoParaAcceder("GestionSesiones"))
             {
-                MessageBox.Show("Funcionalidad de Gestión de Sesiones");
+                VistaPrincipal.Content = new GestionSesionesView();
             }
             else
             {

@@ -26,21 +26,23 @@ namespace GenteFit_WPF
             BtnMisReservas.Visibility = Visibility.Visible;
             BtnReservas.Visibility = Visibility.Visible;
 
-            switch (_usuarioLogueado.TipoRolId)
+            var rol = (TipoRol)(_usuarioLogueado.TipoRolId - 1); // 1..5 -> 0..4
+
+            switch (rol)
             {
-                case (int)TipoRol.Administrador:
+                case TipoRol.Administrador:
                     MostrarBotonesAdministrador();
                     break;
-                case (int)TipoRol.Encargado:
+                case TipoRol.Encargado:
                     MostrarBotonesEncargado();
                     break;
-                case (int)TipoRol.Recepcionista:
+                case TipoRol.Recepcionista:
                     MostrarBotonesRecepcionista();
                     break;
-                case (int)TipoRol.Cliente:
+                case TipoRol.Cliente:
                     // Solo verá los botones básicos
                     break;
-                case (int)TipoRol.Monitor:
+                case TipoRol.Monitor:
                     // Configurar permisos para monitores
                     break;
             }
@@ -177,6 +179,8 @@ namespace GenteFit_WPF
 
         private bool TienePermisoParaAcceder(string funcionalidad)
         {
+            var rol = (TipoRol)(_usuarioLogueado.TipoRolId - 1);
+
             switch (funcionalidad)
             {
                 case "MisReservas":
@@ -184,17 +188,17 @@ namespace GenteFit_WPF
                     return true;
 
                 case "GestionClientes":
-                    return _usuarioLogueado.TipoRolId == (int)TipoRol.Administrador ||
-                           _usuarioLogueado.TipoRolId == (int)TipoRol.Encargado ||
-                           _usuarioLogueado.TipoRolId == (int)TipoRol.Recepcionista;
+                    return rol == TipoRol.Administrador ||
+                           rol == TipoRol.Encargado ||
+                           rol == TipoRol.Recepcionista;
 
                 case "GestionUsuarios":
                 case "AltaInstructor":
                 case "GestionActividades":
                 case "GestionSalas":
                 case "GestionSesiones":
-                    return _usuarioLogueado.TipoRolId == (int)TipoRol.Administrador ||
-                           _usuarioLogueado.TipoRolId == (int)TipoRol.Encargado;
+                    return rol == TipoRol.Administrador ||
+                           rol == TipoRol.Encargado;
 
                 default:
                     return false;

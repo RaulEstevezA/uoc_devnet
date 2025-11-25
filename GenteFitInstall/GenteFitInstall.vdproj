@@ -37644,9 +37644,32 @@
         }
         "LaunchCondition"
         {
+            "{836E08B8-0285-4809-BA42-01DB6754A45D}:_E5467BDAC80D406DA166A329EA6239B2"
+            {
+            "Name" = "8:SQL Server"
+            "Condition" = "8:SQLSERVERSEARCH32 OR SQLSERVERSEARCH32"
+            "Message" = "8:Este programa requiere SQL Server Express. Descárguelo e instálelo antes de continuar."
+            "InstallUrl" = "8:https://go.microsoft.com/fwlink/p/?linkid=2216019&clcid=0x40A&culture=es-es&country=es"
+            }
         }
         "Locator"
         {
+            "{CF66B7F7-B7DA-4B08-A67A-233430638C9C}:_7307A5E6C05B415C9CD1A816199F24B0"
+            {
+            "Name" = "8:SQLServerSearch32"
+            "Root" = "2:1"
+            "RegKey" = "8:SOFTWARE\\WOW6432Node\\Microsoft\\Microsoft SQL Server\\SQLEXPRESS\\MSSQLServer\\CurrentVersion"
+            "Value" = "8:CurrentVersion"
+            "Property" = "8:SQLSERVERSEARCH32"
+            }
+            "{CF66B7F7-B7DA-4B08-A67A-233430638C9C}:_EB7E9407482F4C898FE07768B233A5AC"
+            {
+            "Name" = "8:SQLServerSearch64"
+            "Root" = "2:1"
+            "RegKey" = "8:SOFTWARE\\Microsoft\\Microsoft SQL Server\\Instance Names\\SQL"
+            "Value" = "8:SQLEXPRESS"
+            "Property" = "8:SQLSERVERSEARCH64"
+            }
         }
         "MsiBootstrapper"
         {
@@ -37658,7 +37681,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GenteFit"
         "ProductCode" = "8:{81C184EE-FCF4-4B12-8399-1BB2C33A6458}"
-        "PackageCode" = "8:{FF67631E-AF7E-49F3-B29E-E41B10030131}"
+        "PackageCode" = "8:{CAD6331C-7393-4C07-B6C3-BE893879F3B7}"
         "UpgradeCode" = "8:{74C0B69C-4A39-4BF6-9EDA-A7270C50FC90}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

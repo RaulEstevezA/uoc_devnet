@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="GenteFit_Init.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

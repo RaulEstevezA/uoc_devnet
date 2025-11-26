@@ -2367,6 +2367,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0F148FB6A0BD415483CD499949CD87AA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0FD69160DE21A1B596CF141C57270E11"
         "OwnerKey" = "8:_DFF73F4E3BDD429080B275B5C60121E4"
         "MsmSig" = "8:_UNDEFINED"
@@ -15087,12 +15093,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_98C06FBB920945618049A69BED31AB59"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_98C976FE67E872DDDA9150F3221877A2"
         "OwnerKey" = "8:_F65A371A628E73C1B0815105C38D3724"
         "MsmSig" = "8:_UNDEFINED"
@@ -16115,12 +16115,6 @@
         {
         "MsmKey" = "8:_A49539FF46ECB7DF7948412306587B94"
         "OwnerKey" = "8:_86852A9B70ED4CF1B613DDCFA06C1E1D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A4A84725189D48DA9236ABBBECEAE87A"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -23862,6 +23856,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F148FB6A0BD415483CD499949CD87AA"
+            {
+            "SourcePath" = "8:..\\SQLLauncher\\bin\\Release\\net8.0\\publish\\win-x64\\appsettings.json"
+            "TargetName" = "8:appsettings.json"
+            "Tag" = "8:"
+            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0FD69160DE21A1B596CF141C57270E11"
             {
             "AssemblyRegister" = "3:1"
@@ -28255,7 +28269,7 @@
             "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
+            "Vital" = "11:FALSE"
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
@@ -32067,26 +32081,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_98C06FBB920945618049A69BED31AB59"
-            {
-            "SourcePath" = "8:..\\GenteFit_WPF\\bin\\Release\\net8.0-windows\\publish\\win-x64\\appsettings.json"
-            "TargetName" = "8:appsettings.json"
-            "Tag" = "8:"
-            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_98C976FE67E872DDDA9150F3221877A2"
             {
             "AssemblyRegister" = "3:1"
@@ -32911,26 +32905,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A4A84725189D48DA9236ABBBECEAE87A"
-            {
-            "SourcePath" = "8:..\\GenteFit\\Database\\crearBBDD.sql"
-            "TargetName" = "8:crearBBDD.sql"
-            "Tag" = "8:"
-            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A4E0A05DD5D2428B9E57C1F9029BE177"
@@ -37832,7 +37806,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GenteFit"
         "ProductCode" = "8:{81C184EE-FCF4-4B12-8399-1BB2C33A6458}"
-        "PackageCode" = "8:{535CAA33-CAC8-405D-AF95-7CD5EF5AD35B}"
+        "PackageCode" = "8:{E05EE0A9-57C6-4DE3-957B-8ACE10152D03}"
         "UpgradeCode" = "8:{74C0B69C-4A39-4BF6-9EDA-A7270C50FC90}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -37952,21 +37926,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0D7BFFAC970D434DACD21C7C215C4436"
-            {
-            "Name" = "8:GenteFit"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_007E0A16CDD5466694252561A31EBB7C"
-            "Folder" = "8:_4DFC3EC465E644FAA2ED0529011492E0"
-            "WorkingFolder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
-            "Icon" = "8:_88A8C7F1896D47F0A4FB5E9A4B7B0CF8"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BF39575BE4CA4B61BDF34EF0AC88FB64"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_343CDDA84C4644A4B6884AEFC8C928AD"
             {
             "Name" = "8:GenteFit"
             "Arguments" = "8:"
@@ -37976,6 +37936,34 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_007E0A16CDD5466694252561A31EBB7C"
             "Folder" = "8:_6EEF566EA33F4610ADE858960DD47584"
+            "WorkingFolder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Icon" = "8:_88A8C7F1896D47F0A4FB5E9A4B7B0CF8"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_712C25C55A534DB4B47DE6D28AAEE0FF"
+            {
+            "Name" = "8:Iniciar BBDD"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_5A2F8C40EC4A4353BD6D5FF010B8AEF5"
+            "Folder" = "8:_6EEF566EA33F4610ADE858960DD47584"
+            "WorkingFolder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Icon" = "8:_88A8C7F1896D47F0A4FB5E9A4B7B0CF8"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F6ABE01528A34F4192C909CCDA7686E9"
+            {
+            "Name" = "8:GenteFit"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_007E0A16CDD5466694252561A31EBB7C"
+            "Folder" = "8:_4DFC3EC465E644FAA2ED0529011492E0"
             "WorkingFolder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
             "Icon" = "8:_88A8C7F1896D47F0A4FB5E9A4B7B0CF8"
             "Feature" = "8:"

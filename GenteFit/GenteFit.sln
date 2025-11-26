@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenteFit_WPF", "..\GenteFit
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GenteFitInstall", "..\GenteFitInstall\GenteFitInstall.vdproj", "{271E75D4-3470-EAD3-9CAC-EF03B4DCCBFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLLauncher", "..\SQLLauncher\SQLLauncher.csproj", "{91DCEFE9-21ED-4D66-A0BE-7DF0CBB57A76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{1DC163B5-C01F-4F69-BE68-6FEE8CE20CE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{271E75D4-3470-EAD3-9CAC-EF03B4DCCBFB}.Debug|Any CPU.ActiveCfg = Debug
 		{271E75D4-3470-EAD3-9CAC-EF03B4DCCBFB}.Release|Any CPU.ActiveCfg = Release
+		{91DCEFE9-21ED-4D66-A0BE-7DF0CBB57A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DCEFE9-21ED-4D66-A0BE-7DF0CBB57A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DCEFE9-21ED-4D66-A0BE-7DF0CBB57A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DCEFE9-21ED-4D66-A0BE-7DF0CBB57A76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

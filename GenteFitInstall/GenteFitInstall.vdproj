@@ -22735,21 +22735,6 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_6F4D4A762ECE42918D8FB060F57BA439"
-            {
-            "Name" = "8:SQLLauncher.exe"
-            "Condition" = "8:"
-            "Object" = "8:_5A2F8C40EC4A4353BD6D5FF010B8AEF5"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_DA873048_2A51_4E8C_89EC_196685BF1F7B"
-            "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
-            "Run64Bit" = "11:TRUE"
-            }
         }
         "DefaultFeature"
         {
@@ -37806,7 +37791,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GenteFit"
         "ProductCode" = "8:{81C184EE-FCF4-4B12-8399-1BB2C33A6458}"
-        "PackageCode" = "8:{E05EE0A9-57C6-4DE3-957B-8ACE10152D03}"
+        "PackageCode" = "8:{74E56EE0-F96F-4CC8-A8A3-D9A54FD5C5BD}"
         "UpgradeCode" = "8:{74C0B69C-4A39-4BF6-9EDA-A7270C50FC90}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

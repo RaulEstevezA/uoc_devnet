@@ -363,6 +363,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3281973001B0462A87A3203E3F7B71A8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_349E47B40AC442B185A04CA7CBFB8E5C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -592,6 +598,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5A2566B048C643BEA4014442C3E33250"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A2F8C40EC4A4353BD6D5FF010B8AEF5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1557,6 +1569,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DF65FB14287D4BBABF5B8D145D581E5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E0D01F9983814CAD986C8E10EC1DCFB0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1749,6 +1767,21 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_632F103983BC4BA8A18B5D8FC2B0B158"
+            {
+            "Name" = "8:SQLLauncher.exe"
+            "Condition" = "8:"
+            "Object" = "8:_5A2F8C40EC4A4353BD6D5FF010B8AEF5"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_C1CC9683_83A2_459A_A272_C4ADF808D1A6"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            "Run64Bit" = "11:TRUE"
+            }
         }
         "DefaultFeature"
         {
@@ -3226,6 +3259,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3281973001B0462A87A3203E3F7B71A8"
+            {
+            "SourcePath" = "8:..\\SQLLauncher\\bin\\Release\\net8.0\\publish\\win-x64\\GenteFit_Init.sql"
+            "TargetName" = "8:GenteFit_Init.sql"
+            "Tag" = "8:"
+            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_349E47B40AC442B185A04CA7CBFB8E5C"
             {
             "AssemblyRegister" = "3:1"
@@ -4206,6 +4259,26 @@
                 }
             "SourcePath" = "8:..\\GenteFit_WPF\\bin\\Release\\net8.0-windows\\publish\\win-x64\\System.Threading.Tasks.dll"
             "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5A2F8C40EC4A4353BD6D5FF010B8AEF5"
+            {
+            "SourcePath" = "8:..\\SQLLauncher\\bin\\Release\\net8.0\\publish\\win-x64\\SQLLauncher.exe"
+            "TargetName" = "8:SQLLauncher.exe"
             "Tag" = "8:"
             "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
             "Condition" = "8:"
@@ -8288,6 +8361,26 @@
                 }
             "SourcePath" = "8:..\\GenteFit_WPF\\bin\\Release\\net8.0-windows\\publish\\win-x64\\System.Text.Encoding.CodePages.dll"
             "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF65FB14287D4BBABF5B8D145D581E5E"
+            {
+            "SourcePath" = "8:..\\SQLLauncher\\bin\\Release\\net8.0\\publish\\win-x64\\SQLLauncher.pdb"
+            "TargetName" = "8:SQLLauncher.pdb"
             "Tag" = "8:"
             "Folder" = "8:_EFF0EBE8E0294FFF870F9FCE5AF03126"
             "Condition" = "8:"

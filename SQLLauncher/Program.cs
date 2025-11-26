@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace SQLLauncher
 {
@@ -7,6 +8,11 @@ namespace SQLLauncher
     {
         static int Main(string[] args)
         {
+            File.WriteAllText(
+                Path.Combine(Path.GetTempPath(), "SQLLauncher.log"),
+                "Ejecutado desde instalador: " + DateTime.Now
+            );
+
             string scriptPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GenteFit_Init.sql");
 
             var psi = new ProcessStartInfo

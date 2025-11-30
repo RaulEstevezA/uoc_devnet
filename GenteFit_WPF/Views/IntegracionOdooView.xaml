@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="GenteFit_WPF.Views.IntegracionOdooView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Margin="20">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+
+            <!-- Selección de qué exportar -->
+            <ComboBox x:Name="ComboSeleccioneEntidad"
+                      Margin="0,0,0,20"
+                      SelectedIndex="0">
+                <ComboBoxItem Content="Clientes"/>
+                <ComboBoxItem Content="Actividades" IsEnabled="False"/>
+                <ComboBoxItem Content="Salas" IsEnabled="False"/>
+                <ComboBoxItem Content="Instructores" IsEnabled="False"/>
+                <ComboBoxItem Content="Reservas" IsEnabled="False"/>
+            </ComboBox>
+
+            <!-- Botones -->
+            <Button Content="Exportar a XML"
+                    x:Name="BtnExportar"
+                    Margin="0,0,0,10"
+                    Width="200"
+                    Click="BtnExportar_Click"/>
+
+            <Button Content="Importar XML"
+                    x:Name="BtnImportar"
+                    Width="200"
+                    Click="BtnImportar_Click"/>
+
+        </StackPanel>
+    </Grid>
+
+</UserControl>

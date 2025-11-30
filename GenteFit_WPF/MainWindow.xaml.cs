@@ -66,6 +66,9 @@ namespace GenteFit_WPF
             BtnGestionSesiones.Visibility = Visibility.Visible;
             BtnGestionClientes.Visibility = Visibility.Visible;
             BtnAltaInstructor.Visibility = Visibility.Visible;
+
+            // Boton de integracion con Odoo solo para administradores
+            BtnIntegracionOdoo.Visibility = Visibility.Visible;
         }
 
         private void MostrarBotonesEncargado()
@@ -176,6 +179,19 @@ namespace GenteFit_WPF
                 MostrarMensajeSinPermisos();
             }
         }
+
+        private void BtnIntegracionOdoo_Click(object sender, RoutedEventArgs e)
+        {
+            if (TienePermisoParaAcceder("IntegracionOdoo"))
+            {
+                VistaPrincipal.Content = new IntegracionOdooView();
+            }
+            else
+            {
+                MostrarMensajeSinPermisos();
+            }
+        }
+
 
         private bool TienePermisoParaAcceder(string funcionalidad)
         {

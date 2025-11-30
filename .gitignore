@@ -50,6 +50,7 @@ local.properties
 [Oo]bj/
 [Ll]og/
 *.exe
+*.msi
 *.dll
 *.pdb
 *.cache

@@ -1,0 +1,38 @@
+<UserControl x:Class="GenteFit_WPF.Views.GestionSalasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- SUBMENÚ HORIZONTAL -->
+        <StackPanel Orientation="Horizontal" Background="#EEEEEE" Margin="10">
+
+            <Button Content="Alta Sala"
+                    Margin="0 0 10 0"
+                    Click="BtnAltaSala_Click"/>
+
+            <Button Content="Mostrar Salas"
+                    Margin="0 0 10 0"
+                    Click="BtnMostrarSalas_Click"/>
+
+            <Button Content="Modificar Sala"
+                    Margin="0 0 10 0"
+                    Click="BtnModificarSala_Click"/>
+
+            <Button Content="Dar de Baja Sala"
+                    Margin="0 0 10 0"
+                    Click="BtnBajaSala_Click"/>
+
+        </StackPanel>
+
+        <!-- CONTENIDO DINÁMICO -->
+        <ContentControl x:Name="SalasContentPresenter"
+                        Grid.Row="1"
+                        Margin="10" />
+
+    </Grid>
+</UserControl>

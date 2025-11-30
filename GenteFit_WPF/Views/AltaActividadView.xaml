@@ -1,0 +1,27 @@
+<UserControl x:Class="GenteFit_WPF.Views.AltaActividadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+
+        <TextBlock Text="Alta actividad"
+                   FontSize="20"
+                   Margin="0 0 0 20"/>
+
+        <TextBlock Text="Nombre"/>
+        <TextBox x:Name="NombreTextBox" Width="200"/>
+
+        <TextBlock Text="Duracion (minutos)"/>
+        <TextBox x:Name="DuracionTextBox" Width="200"/>
+
+        <TextBlock Text="Plazas maximas"/>
+        <TextBox x:Name="PlazasTextBox" Width="200"/>
+
+        <Button Content="Crear actividad"
+                Width="200"
+                Margin="0 20 0 0"
+                Click="CrearActividad_Click"/>
+
+    </StackPanel>
+
+</UserControl>

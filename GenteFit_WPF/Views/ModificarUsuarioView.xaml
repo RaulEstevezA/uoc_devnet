@@ -1,0 +1,63 @@
+<UserControl x:Class="GenteFit_WPF.Views.ModificarUsuarioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="20">
+
+        <TextBlock Text="Modificar Usuario"
+                   FontSize="20"
+                   Margin="0 0 0 20" />
+
+        <!-- Buscar por ID -->
+        <TextBlock Text="Buscar por ID"/>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBox x:Name="BuscarIdTextBox" Width="150"/>
+            <Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorId_Click"/>
+        </StackPanel>
+
+        <!-- Buscar por Email -->
+        <TextBlock Text="Buscar por Email"/>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBox x:Name="BuscarEmailTextBox" Width="150"/>
+            <Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorEmail_Click"/>
+        </StackPanel>
+
+        <!-- Buscar por Username -->
+        <TextBlock Text="Buscar por Username"/>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+            <TextBox x:Name="BuscarUsernameTextBox" Width="150"/>
+            <Button Content="Buscar"
+                    Margin="10 0 0 0"
+                    Click="BuscarPorUsername_Click"/>
+        </StackPanel>
+
+        <!-- Datos del usuario -->
+        <TextBlock Text="ID"/>
+        <TextBox x:Name="IdTextBox" IsReadOnly="True" Width="200"/>
+
+        <TextBlock Text="Username"/>
+        <TextBox x:Name="UsernameTextBox" Width="200"/>
+
+        <TextBlock Text="Email usuario"/>
+        <TextBox x:Name="EmailTextBox" Width="200"/>
+
+        <TextBlock Text="Tipo Rol ID"/>
+        <TextBox x:Name="TipoRolTextBox" Width="200"/>
+
+        <CheckBox x:Name="ActivoCheckBox"
+                  Content="Usuario activo"
+                  Margin="0 10 0 0"/>
+
+        <Button Content="Guardar cambios"
+                Width="200"
+                Margin="0 20 0 0"
+                Click="GuardarCambios_Click"/>
+
+    </StackPanel>
+
+</UserControl>
+

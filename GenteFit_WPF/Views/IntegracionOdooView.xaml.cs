@@ -24,19 +24,21 @@ namespace GenteFit_WPF.Views
 
             try
             {
-                // 1. Obtener la ruta raíz del ejecutable
+                //Obtener la ruta raíz del ejecutable
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
-                // 2. Crear la carpeta xml_data si no existe
+                //Crear la carpeta xml_data si no existe
                 string xmlFolder = Path.Combine(basePath, "xml_data");
                 Directory.CreateDirectory(xmlFolder);
 
-                // 3. Definir la ruta del archivo XML
+                //Definir la ruta del archivo XML
                 string xmlFile = Path.Combine(xmlFolder, "clientes.xml");
 
-                // 4. Obtener los clientes y exportar
+                //Obtener los clientes y exportar
                 var clientes = new ClienteDAO().GetAll().ToList();
                 ClienteXML.GuardarClientesEnXml(clientes, xmlFile);
+
+                // TODO Pendiente: Subir el archivo a Odoo mediante su API
 
                 MessageBox.Show($"Exportación completada.\nArchivo generado en:\n{xmlFile}");
             }
@@ -57,7 +59,26 @@ namespace GenteFit_WPF.Views
             }
 
             MessageBox.Show("Importación iniciada.");
-            // Aquí llamaremos al ImportadorXML en el siguiente paso
-        }
+            
+
+            // TODO Pendiente: Descargar el archivo desde Odoo mediante su API
+
+
+            try
+            {
+                //Obtener la ruta raíz del ejecutable
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                //Definir la ruta del archivo XML
+                string xmlFile = Path.Combine(basePath, "xml_data", "clientes.xml");
+
+                //Importar los clientes desde el XML
+                ClienteXML.ImportarClientesDesdeXml(xmlFile);
+                MessageBox.Show("Importación completada.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al importar clientes:\n{ex.Message}");
+            }
     }
 }

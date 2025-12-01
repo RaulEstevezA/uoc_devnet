@@ -216,6 +216,9 @@ namespace GenteFit_WPF
                     return rol == TipoRol.Administrador ||
                            rol == TipoRol.Encargado;
 
+                case "IntegracionOdoo":        
+                    return rol == TipoRol.Administrador;
+
                 default:
                     return false;
             }

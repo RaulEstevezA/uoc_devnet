@@ -24,13 +24,13 @@
             </ComboBox>
 
             <!-- Botones -->
-            <Button Content="Exportar a XML"
+            <Button Content="Exportar a Odoo"
                     x:Name="BtnExportar"
                     Margin="0,0,0,10"
                     Width="200"
                     Click="BtnExportar_Click"/>
 
-            <Button Content="Importar XML"
+            <Button Content="Importar desde Odoo"
                     x:Name="BtnImportar"
                     Width="200"
                     Click="BtnImportar_Click"/>

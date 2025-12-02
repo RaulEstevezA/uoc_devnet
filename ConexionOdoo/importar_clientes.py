@@ -1,4 +1,4 @@
-ï»¿import os
+import os
 import xmlrpc.client
 import xml.etree.ElementTree as ET
 
@@ -12,13 +12,13 @@ xml_path = os.path.join(root_path, "xml_data", "clientes.xml")
 print(f"Usando archivo XML en: {xml_path}")
 
 
-# CONFIGURACIÃ“N ODOO
+# CONFIGURACIÓN ODOO
 url = "http://localhost:8069"
 db = "gente_fit_db"             
 username = "admin@example.com"
 password = "admin"              
 
-# AutenticaciÃ³n XML-RPC
+# Autenticación XML-RPC
 common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
 uid = common.authenticate(db, username, password, {})
 
@@ -60,4 +60,4 @@ for cliente in root.findall("cliente"):
 
     contador += 1
 
-print(f"ImportaciÃ³n completada: {contador} clientes cargados en Odoo.")
+print(f"Importación completada: {contador} clientes cargados en Odoo.")

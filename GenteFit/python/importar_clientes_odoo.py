@@ -42,13 +42,13 @@ contador = 0
 for cliente in root.findall("cliente"):
 
     vals = {
+        "Id": cliente.find("Id").text,
         "dni": cliente.find("dni").text,
         "nombre": cliente.find("nombre").text,
         "apellido1": cliente.find("apellido1").text,
         "apellido2": (cliente.find("apellido2").text 
                       if cliente.find("apellido2") is not None else ""),
         "email": cliente.find("email").text,
-        "activo": cliente.find("activo").text.lower() == "true",
     }
 
     models.execute_kw(

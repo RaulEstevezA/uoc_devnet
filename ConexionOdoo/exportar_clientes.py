@@ -1,6 +1,7 @@
 ﻿import os
 import xmlrpc.client
 import xml.etree.ElementTree as ET
+from dotenv import load_dotenv
 
 # -------------------------------
 # RUTA DE SALIDA DEL XML
@@ -13,13 +14,12 @@ xml_path = os.path.join(xml_folder, "clientes.xml")
 
 print(f"Exportando clientes a: {xml_path}")
 
-# -------------------------------
-# CONFIGURACI�N ODOO
-# -------------------------------
-url = "http://localhost:8069"
-db = "gente_fit_db"
-username = "admin@example.com"
-password = "admin"
+# CONFIGURACIóN ODOO
+load_dotenv()
+url = os.getenv("ODOO_URL")
+db = os.getenv("ODOO_DB")
+username = os.getenv("ODOO_USER")
+password = os.getenv("ODOO_PASS")
 
 # Autenticaci�n XML-RPC
 common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
@@ -30,10 +30,7 @@ if not uid:
 
 models = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/object")
 
-# -------------------------------
 # CONSULTAR CLIENTES EN ODOO
-# -------------------------------
-# Ajusta los campos seg�n tu modelo
 fields = ["Id", "dni", "nombre", "apellido1", "apellido2", "email"]
 
 # Leer todos los clientes
@@ -46,9 +43,7 @@ clientes = models.execute_kw(
 
 print(f"Clientes encontrados: {len(clientes)}")
 
-# -------------------------------
 # CREAR XML
-# -------------------------------
 root = ET.Element("clientes")
 
 for cliente in clientes:

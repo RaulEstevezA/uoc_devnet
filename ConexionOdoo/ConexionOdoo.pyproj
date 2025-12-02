@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>15ac9ab7-c397-49be-b96b-dff8de6c1d11</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ConexionOdoo.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,9 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ConexionOdoo.py" />
+    <Compile Include="main.py" />
     <Compile Include="exportar_clientes.py" />
     <Compile Include="importar_clientes.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".env" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

@@ -59,7 +59,7 @@ namespace GenteFit_WPF.Views
             }
 
             MessageBox.Show("Importación iniciada.");
-            
+
 
             // TODO Pendiente: Descargar el archivo desde Odoo mediante su API
 
@@ -80,5 +80,6 @@ namespace GenteFit_WPF.Views
             {
                 MessageBox.Show($"Error al importar clientes:\n{ex.Message}");
             }
+        }
     }
 }

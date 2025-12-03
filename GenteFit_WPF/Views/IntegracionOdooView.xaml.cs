@@ -19,7 +19,7 @@ namespace GenteFit_WPF.Views
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string proyectoRoot = Directory.GetParent(basePath).Parent.Parent.Parent.FullName;
 
-            exePath = Path.Combine(proyectoRoot, "ConexionOdoo", "main.exe");
+            exePath = Path.Combine(proyectoRoot, "ConexionOdoo", "conexionOdoo.exe");
         }
 
         // ============================================================

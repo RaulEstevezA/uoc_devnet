@@ -1,12 +1,10 @@
 from importar_clientes import importar_clientes_odoo
 
 
-
-
 if __name__ == "__main__":
     
     importar_clientes_odoo()
 
 
     # Mi idea es crear un exe al cual podamos pasar un parametro que inicie la exportacion o la importacion.
-    # Este exe se llamará desde un proceso lanzado por la aplicación GenteFit.
+    # Este exe se llamarï¿½ desde un proceso lanzado por la aplicaciï¿½n GenteFit.

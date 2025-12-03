@@ -42,6 +42,21 @@ namespace GenteFit_WPF.Views
 
             try
             {
+                //Obtener la ruta raíz del ejecutable
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                //Crear la carpeta xml_data si no existe
+                string xmlFolder = Path.Combine(basePath, "xml_data");
+                Directory.CreateDirectory(xmlFolder);
+
+                //Definir la ruta del archivo XML
+                string xmlFile = Path.Combine(xmlFolder, "clientes.xml");
+
+                //Obtener los clientes y exportar
+                var clientes = new ClienteDAO().GetAll().ToList();
+                ClienteXML.GuardarClientesEnXml(clientes, xmlFile);
+
+
                 // Ejecutar: python main.py exportar
                 var psi = new ProcessStartInfo
                 {

@@ -4,59 +4,95 @@ import xml.etree.ElementTree as ET
 from dotenv import load_dotenv
 
 def exportar_clientes():
-    # -------------------------------
-    # RUTA DE SALIDA DEL XML
-    # -------------------------------
-    base_path = os.path.dirname(os.path.abspath(__file__))      # /ConexionOdoo/
-    root_path = os.path.dirname(base_path)                      # /Proyecto/
+
+    print("\n=== INICIANDO EXPORTACIÓN ODOO → XML ===")
+
+    # -------------------------------------
+    # RUTAS
+    # -------------------------------------
+    base_path = os.path.dirname(os.path.abspath(__file__))  
+    root_path = os.path.dirname(base_path)                  
     xml_folder = os.path.join(root_path, "xml_data")
     os.makedirs(xml_folder, exist_ok=True)
     xml_path = os.path.join(xml_folder, "clientes.xml")
 
-    print(f"[Python] Exportando clientes a: {xml_path}")
+    print(f"[INFO] Archivo destino: {xml_path}")
 
-    # CONFIGURACIÓN ODOO
+    # -------------------------------------
+    # VARIABLES ENTORNO
+    # -------------------------------------
     load_dotenv()
     url = os.getenv("ODOO_URL")
     db = os.getenv("ODOO_DB")
     username = os.getenv("ODOO_USER")
     password = os.getenv("ODOO_PASS")
 
-    # Autenticación XML-RPC
-    common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
-    uid = common.authenticate(db, username, password, {})
+    if not all([url, db, username, password]):
+        print("[ERROR] Variables de entorno no definidas.")
+        return 1
+
+    # -------------------------------------
+    # AUTENTICACIÓN
+    # -------------------------------------
+    try:
+        common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
+        uid = common.authenticate(db, username, password, {})
+    except Exception as e:
+        print(f"[ERROR] No se pudo conectar con Odoo: {e}")
+        return 1
 
     if not uid:
-        raise Exception("Error al autenticar con Odoo.")
+        print("[ERROR] No se pudo autenticar.")
+        return 1
+
+    print(f"[OK] Autenticado en Odoo con UID={uid}")
 
     models = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/object")
 
-    # CONSULTAR CLIENTES EN ODOO
-    fields = ["Id", "dni", "nombre", "apellido1", "apellido2", "email"]
+    # -------------------------------------
+    # CONSULTAR CLIENTES
+    # -------------------------------------
+    fields = ["id_cliente", "dni", "nombre", "apellido1", "apellido2", "email"]
 
-    clientes = models.execute_kw(
-        db, uid, password,
-        "gente.fit.cliente", "search_read",
-        [[]],
-        {"fields": fields}
-    )
+    try:
+        clientes = models.execute_kw(
+            db, uid, password,
+            "gente.fit.cliente", "search_read",
+            [[]],
+            {"fields": fields}
+        )
+    except Exception as e:
+        print(f"[ERROR] No se pudo consultar clientes: {e}")
+        return 1
 
-    print(f"[Python] Clientes encontrados: {len(clientes)}")
+    print(f"[OK] Clientes recibidos: {len(clientes)}")
 
-    # CREAR XML
+    # -------------------------------------
+    # GENERAR XML
+    # -------------------------------------
     root = ET.Element("Clientes")
 
     for cliente in clientes:
         elem = ET.SubElement(root, "Cliente")
-        for campo in fields:
-            sub = ET.SubElement(elem, campo)
-            sub.text = str(cliente.get(campo, "") if cliente.get(campo) is not None else "")
+
+        # ID → desde id_cliente
+        ET.SubElement(elem, "Id").text = str(cliente.get("id_cliente", "") or "")
+
+        # Campos de texto en formato C# (capitalizados)
+        ET.SubElement(elem, "Dni").text = cliente.get("dni", "") or ""
+        ET.SubElement(elem, "Nombre").text = cliente.get("nombre", "") or ""
+        ET.SubElement(elem, "Apellido1").text = cliente.get("apellido1", "") or ""
+        ET.SubElement(elem, "Apellido2").text = cliente.get("apellido2", "") or ""
+        ET.SubElement(elem, "Email").text = cliente.get("email", "") or ""
 
     tree = ET.ElementTree(root)
     tree.write(xml_path, encoding="utf-8", xml_declaration=True)
 
-    print(f"[Python] Exportación completada correctamente.")
+    print("[OK] Exportación completada correctamente.")
+    print("==========================================\n")
+
     return 0
+
 
 if __name__ == "__main__":
     exportar_clientes()

@@ -8,10 +8,11 @@ def importar_clientes_odoo():
 
     print("=== INICIO IMPORTACIÓN CLIENTES XML → ODOO ===")
 
-  
+    # --------------------------------------------
     # LOCALIZAR RUTA DEL XML
-    base_path = os.path.dirname(os.path.abspath(__file__))      # /GenteFit/python/
-    root_path = os.path.dirname(base_path)                      # /GenteFit/
+    # --------------------------------------------
+    base_path = os.path.dirname(os.path.abspath(__file__))  # /ConexionOdoo/
+    root_path = os.path.dirname(base_path)                  # /GenteFit/
     xml_path = os.path.join(root_path, "xml_data", "clientes.xml")
 
     print(f"[INFO] Archivo XML: {xml_path}")
@@ -20,8 +21,9 @@ def importar_clientes_odoo():
         print(f"[ERROR] No existe el archivo XML: {xml_path}")
         return
 
-
-    # CONFIGURACIÓN ODOO
+    # --------------------------------------------
+    # VARIABLES DE ENTORNO
+    # --------------------------------------------
     load_dotenv()
     url = os.getenv("ODOO_URL")
     db = os.getenv("ODOO_DB")
@@ -29,11 +31,12 @@ def importar_clientes_odoo():
     password = os.getenv("ODOO_PASS")
 
     if not all([url, db, username, password]):
-        print("[ERROR] Variables de entorno ODOO_URL ODOO_DB ODOO_USER ODOO_PASS no definidas.")
+        print("[ERROR] Variables de entorno no definidas.")
         return
 
-
-    # AUTENTICACIÓN XML-RPC
+    # --------------------------------------------
+    # AUTENTICACIÓN
+    # --------------------------------------------
     try:
         common = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/common")
         uid = common.authenticate(db, username, password, {})
@@ -42,15 +45,16 @@ def importar_clientes_odoo():
         return
 
     if not uid:
-        print("[ERROR] No se pudo autenticar con Odoo.")
+        print("[ERROR] No se pudo autenticar.")
         return
 
-    print(f"[OK] Autenticado en Odoo como UID={uid}")
+    print(f"[OK] Autenticado como UID={uid}")
 
     models = xmlrpc.client.ServerProxy(f"{url}/xmlrpc/2/object")
 
-
+    # --------------------------------------------
     # LEER XML
+    # --------------------------------------------
     try:
         tree = ET.parse(xml_path)
         root = tree.getroot()
@@ -58,31 +62,20 @@ def importar_clientes_odoo():
         print(f"[ERROR] No se pudo leer el XML: {e}")
         return
 
-
+    # --------------------------------------------
     # IMPORTAR CLIENTES
+    # --------------------------------------------
     contador = 0
 
     for cliente in root.findall("Cliente"):
 
-        try:
-            id_cliente = int(cliente.find("Id").text or 0)
-            dni = cliente.find("Dni").text or ""
-            nombre = cliente.find("Nombre").text or ""
-            apellido1 = cliente.find("Apellido1").text or ""
-            apellido2 = cliente.find("Apellido2").text if cliente.find("Apellido2") is not None else ""
-            email = cliente.find("Email").text if cliente.find("Email") is not None else ""
-
-        except Exception as e:
-            print(f"[WARN] Error leyendo nodo XML: {e}")
-            continue
-
         vals = {
-            "id_cliente": id_cliente,
-            "dni": dni,
-            "nombre": nombre,
-            "apellido1": apellido1,
-            "apellido2": apellido2,
-            "email": email,
+            "id_cliente": int(cliente.findtext("Id", "0")),
+            "dni": cliente.findtext("Dni", ""),
+            "nombre": cliente.findtext("Nombre", ""),
+            "apellido1": cliente.findtext("Apellido1", ""),
+            "apellido2": cliente.findtext("Apellido2", ""),
+            "email": cliente.findtext("Email", ""),
         }
 
         try:
@@ -92,12 +85,15 @@ def importar_clientes_odoo():
                 "create",
                 [vals]
             )
-            print(f"[OK] Cliente importado: {dni} ({nombre})")
+            print(f"[OK] Cliente importado: {vals['dni']} ({vals['nombre']})")
             contador += 1
 
         except Exception as e:
-            print(f"[ERROR] No se pudo insertar cliente {dni}: {e}")
+            print(f"[ERROR] No se pudo insertar cliente {vals['dni']}: {e}")
 
+    # --------------------------------------------
+    # FIN
+    # --------------------------------------------
     print("\n=== IMPORTACIÓN FINALIZADA ===")
     print(f"[OK] Total importados: {contador}")
     print("================================\n")

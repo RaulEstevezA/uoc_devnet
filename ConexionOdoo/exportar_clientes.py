@@ -1,4 +1,5 @@
 ﻿import os
+import sys
 import xmlrpc.client
 import xml.etree.ElementTree as ET
 from dotenv import load_dotenv
@@ -8,11 +9,15 @@ def exportar_clientes():
     print("\n=== INICIANDO EXPORTACIÓN ODOO → XML ===")
 
     # -------------------------------------
-    # RUTAS
+    # RUTAS (carpeta del ejecutable o script)
     # -------------------------------------
-    base_path = os.path.dirname(os.path.abspath(__file__))  
-    root_path = os.path.dirname(base_path)                  
-    xml_folder = os.path.join(root_path, "xml_data")
+    if getattr(sys, 'frozen', False):
+        # Ejecutable (PyInstaller)
+        base_path = os.path.dirname(sys.executable)
+    else:
+        # Script .py
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    xml_folder = os.path.join(base_path, "xml_data")
     os.makedirs(xml_folder, exist_ok=True)
     xml_path = os.path.join(xml_folder, "clientes.xml")
 

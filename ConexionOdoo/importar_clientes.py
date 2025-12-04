@@ -1,4 +1,5 @@
 import os
+import sys
 import xmlrpc.client
 import xml.etree.ElementTree as ET
 from dotenv import load_dotenv
@@ -9,11 +10,15 @@ def importar_clientes_odoo():
     print("=== INICIO IMPORTACIÓN CLIENTES XML → ODOO ===")
 
     # --------------------------------------------
-    # LOCALIZAR RUTA DEL XML
+    # LOCALIZAR RUTA DEL XML (carpeta del ejecutable o script)
     # --------------------------------------------
-    base_path = os.path.dirname(os.path.abspath(__file__))  # /ConexionOdoo/
-    root_path = os.path.dirname(base_path)                  # /GenteFit/
-    xml_path = os.path.join(root_path, "xml_data", "clientes.xml")
+    if getattr(sys, 'frozen', False):
+        # Ejecutable (PyInstaller)
+        base_path = os.path.dirname(sys.executable)
+    else:
+        # Script .py
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    xml_path = os.path.join(base_path, "xml_data", "clientes.xml")
 
     print(f"[INFO] Archivo XML: {xml_path}")
 

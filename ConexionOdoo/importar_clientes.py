@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 def importar_clientes_odoo():
 
-    print("=== INICIO IMPORTACIÓN CLIENTES XML → ODOO ===")
+    print("=== INICIO IMPORTACIÓN CLIENTES XML -> ODOO ===")
 
     # --------------------------------------------
     # LOCALIZAR RUTA DEL XML (carpeta del ejecutable o script)

@@ -58,7 +58,7 @@ namespace GenteFit_WPF.Views
                 var psi = new ProcessStartInfo
                 {
                     FileName = exePath,
-                    Arguments = "exportar",
+                    Arguments = "importar",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -108,7 +108,7 @@ namespace GenteFit_WPF.Views
                 var psi = new ProcessStartInfo
                 {
                     FileName = exePath,
-                    Arguments = "importar",
+                    Arguments = "exportar",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,

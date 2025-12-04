@@ -15,11 +15,9 @@ namespace GenteFit_WPF.Views
         {
             InitializeComponent();
 
-            // Ruta al ejecutable Python generado con PyInstaller
+            // Ruta al ejecutable Python generado con PyInstaller (junto al exe WPF)
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string proyectoRoot = Directory.GetParent(basePath).Parent.Parent.Parent.FullName;
-
-            exePath = Path.Combine(proyectoRoot, "ConexionOdoo", "conexionOdoo.exe");
+            exePath = Path.Combine(basePath, "conexionOdoo.exe");
         }
 
         // ============================================================
@@ -42,26 +40,25 @@ namespace GenteFit_WPF.Views
 
             try
             {
-                //Obtener la ruta raíz del ejecutable
+                // Usar la carpeta base del ejecutable WPF
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
-                //Crear la carpeta xml_data si no existe
+                // Crear la carpeta xml_data si no existe
                 string xmlFolder = Path.Combine(basePath, "xml_data");
                 Directory.CreateDirectory(xmlFolder);
 
-                //Definir la ruta del archivo XML
+                // Definir la ruta del archivo XML
                 string xmlFile = Path.Combine(xmlFolder, "clientes.xml");
 
-                //Obtener los clientes y exportar
+                // Obtener los clientes y exportar
                 var clientes = new ClienteDAO().GetAll().ToList();
                 ClienteXML.GuardarClientesEnXml(clientes, xmlFile);
 
-
-                // Ejecutar: python main.py exportar
+                // Ejecutar: conexionOdoo.exe exportar
                 var psi = new ProcessStartInfo
                 {
                     FileName = exePath,
-                    Arguments = "exportar",
+                    Arguments = "importar",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -107,11 +104,11 @@ namespace GenteFit_WPF.Views
             {
                 MessageBox.Show("Descargando clientes desde Odoo...");
 
-                // 1. Ejecutar: python main.py importar
+                // 1. Ejecutar: conexionOdoo.exe importar
                 var psi = new ProcessStartInfo
                 {
                     FileName = exePath,
-                    Arguments = "importar",
+                    Arguments = "exportar",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -124,10 +121,9 @@ namespace GenteFit_WPF.Views
                 string error = process.StandardError.ReadToEnd();
                 process.WaitForExit();
 
-                // 2. Buscar XML generado por Python
+                // 2. Buscar XML generado por Python en la misma carpeta base
                 string basePath = AppDomain.CurrentDomain.BaseDirectory;
-                string solutionRoot = Directory.GetParent(basePath).Parent.Parent.Parent.FullName;
-                string xmlFile = Path.Combine(solutionRoot, "xml_data", "clientes.xml");
+                string xmlFile = Path.Combine(basePath, "xml_data", "clientes.xml");
 
                 if (!File.Exists(xmlFile))
                     throw new FileNotFoundException("Python no generó el XML", xmlFile);

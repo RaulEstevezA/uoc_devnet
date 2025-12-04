@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 def exportar_clientes():
 
-    print("\n=== INICIANDO EXPORTACIÓN ODOO → XML ===")
+    print("\n=== INICIANDO EXPORTACIÓN ODOO -> XML ===")
 
     # -------------------------------------
     # RUTAS (carpeta del ejecutable o script)

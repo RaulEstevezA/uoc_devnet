@@ -26,7 +26,7 @@ def main():
     # IMPORTAR: XML -> Odoo
     # -----------------------------------
     if accion == "importar":
-        print("\n=== IMPORTANDO CLIENTES XML → ODOO ===")
+        print("\n=== IMPORTANDO CLIENTES XML -> ODOO ===")
 
         try:
             importar_clientes_odoo()
@@ -41,7 +41,7 @@ def main():
     # EXPORTAR: Odoo -> XML
     # -----------------------------------
     elif accion == "exportar":
-        print("\n=== EXPORTANDO CLIENTES ODOO → XML ===")
+        print("\n=== EXPORTANDO CLIENTES ODOO -> XML ===")
 
         try:
             exportar_clientes()

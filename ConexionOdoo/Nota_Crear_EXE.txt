@@ -1,0 +1,13 @@
+
+
+
+
+
+Para crear el exe usar el siguiente comando:
+
+
+pyinstaller --onefile --name conexionOdoo main.py
+
+
+El exe se encontrará en la carpeta "dist"
+Adjuntar fichero .env con las variables de entorno necesarias para la conexión a Odoo.

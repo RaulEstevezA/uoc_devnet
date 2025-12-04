@@ -13,16 +13,35 @@
         </Grid.ColumnDefinitions>
 
         <!-- Columna fija de navegación -->
-        <StackPanel Grid.Column="0" Background="LightGray">
-            <Button x:Name="BtnMisReservas" Content="Mis Reservas" Margin="10,5,10,5" Click="BtnMisReservas_Click"/>
-            <Button x:Name="BtnReservas" Content="Reservar Actividades" Margin="10,5,10,5" Click="BtnReservas_Click"/>
-            <Button x:Name="BtnGestionClientes" Content="Gestion Cliente" Margin="10,5,10,5" Click="BtnGestionClientes_Click"/>
-            <Button x:Name="BtnAltaInstructor" Content="Alta Instructor" Margin="10,5,10,5" Click="BtnAltaInstructor_Click"/>
-            <Button x:Name="BtnGestionUsuarios" Content="Gestion Usuario" Margin="10,5,10,5" Click="BtnGestionUsuarios_Click"/>
-            <Button x:Name="BtnGestionActividades" Content="Gestion Actividades" Margin="10,5,10,5" Click="BtnGestionActividades_Click"/>
-            <Button x:Name="BtnGestionSalas" Content="Gestion Salas" Margin="10,5,10,5" Click="BtnGestionSalas_Click"/>
-            <Button x:Name="BtnGestionSesiones" Content="Gestion Sesiones" Margin="10,5,10,5" Click="BtnGestionSesiones_Click"/>
-        </StackPanel>
+        <Grid Grid.Column="0" Background="LightGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <!-- Botones principales -->
+                <RowDefinition Height="Auto" />
+                <!-- Botón Odoo abajo -->
+            </Grid.RowDefinitions>
+
+            <!-- Parte superior: todos los botones normales -->
+            <StackPanel Grid.Row="0">
+                <Button x:Name="BtnMisReservas" Content="Mis Reservas" Margin="10,5,10,5" Click="BtnMisReservas_Click"/>
+                <Button x:Name="BtnReservas" Content="Reservar Actividades" Margin="10,5,10,5" Click="BtnReservas_Click"/>
+                <Button x:Name="BtnGestionClientes" Content="Gestion Cliente" Margin="10,5,10,5" Click="BtnGestionClientes_Click"/>
+                <Button x:Name="BtnAltaInstructor" Content="Alta Instructor" Margin="10,5,10,5" Click="BtnAltaInstructor_Click"/>
+                <Button x:Name="BtnGestionUsuarios" Content="Gestion Usuario" Margin="10,5,10,5" Click="BtnGestionUsuarios_Click"/>
+                <Button x:Name="BtnGestionActividades" Content="Gestion Actividades" Margin="10,5,10,5" Click="BtnGestionActividades_Click"/>
+                <Button x:Name="BtnGestionSalas" Content="Gestion Salas" Margin="10,5,10,5" Click="BtnGestionSalas_Click"/>
+                <Button x:Name="BtnGestionSesiones" Content="Gestion Sesiones" Margin="10,5,10,5" Click="BtnGestionSesiones_Click"/>
+            </StackPanel>
+
+            <!-- Parte inferior: Botón Integración Odoo -->
+            <Button x:Name="BtnIntegracionOdoo"
+            Grid.Row="1"
+            Content="Integración Odoo"
+            Margin="10,10,10,15"
+            VerticalAlignment="Bottom"
+            Click="BtnIntegracionOdoo_Click"/>
+        </Grid>
+
 
         <!-- Aquí se mostrarán las vistas -->
         <ContentControl Grid.Column="1" x:Name="VistaPrincipal">

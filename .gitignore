@@ -94,3 +94,5 @@ packages/
 *.project
 *.classpath
 .settings/
+appsettings.json
+.env
